@@ -1,1 +1,0 @@
-{"name":"portfolio-next","version":"1.0.0","description":"","main":"index.js","scripts":{"dev":"next","build":"next build","start":"next start"},"keywords":[],"author":{"name":"sujyoth"},"license":"ISC","dependencies":{"next":"^9.3.3","react":"^16.13.1","react-dom":"^16.13.1"},"readme":"ERROR: No README data found!","_id":"portfolio-next@1.0.0"}

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 
 const PostLink = ({ show }) => (
-    <li>
-      <Link href="/p/[id]" as={`/p/${show.id}`}>
-        <a>{show.name}</a>
-      </Link>
-      <style jsx>{`
+  <li>
+    <Link href="/p/[id]" as={`/p/${show.id}`}>
+      <a>{show.name}</a>
+    </Link>
+    <style jsx>{`
       li {
         list-style: none;
         margin: 5px 0;
@@ -23,7 +23,7 @@ const PostLink = ({ show }) => (
         opacity: 0.6;
       }
     `}</style>
-    </li>
+  </li>
 );
 
 const Index = props => (
@@ -60,10 +60,10 @@ const Index = props => (
           opacity: 0.6;
         }
       `}</style>
-	</Layout>
+  </Layout>
 );
 
-Index.getInitialProps = async function() {
+Index.getInitialProps = async function () {
   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
   const data = await res.json();
 

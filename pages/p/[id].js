@@ -5,15 +5,15 @@ import Markdown from 'react-markdown';
 const Post = props => (
   <Layout>
     <div className='markdown'>
-    <Markdown
-          source={`
+      <Markdown
+        source={`
 ### ${props.show.name}
 
 ![Batman Image](${props.show.image.medium})
 
 ${props.show.summary.replace(/<[/]?[pb]>/g, '')}
       `}
-        />
+      />
     </div>
     <style jsx global>
       {`
@@ -44,7 +44,7 @@ ${props.show.summary.replace(/<[/]?[pb]>/g, '')}
   </Layout>
 );
 
-Post.getInitialProps = async function(context) {
+Post.getInitialProps = async function (context) {
   const { id } = context.query;
   const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
   const show = await res.json();

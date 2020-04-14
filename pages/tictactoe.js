@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Layout from "../components/MyLayout";
 
 export default function tictactoe() {

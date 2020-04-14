@@ -15,6 +15,9 @@ const Header = () => (
     <Link href="/api/randomQuote">
       <a style={linkStyle}>Random Quote</a>
     </Link>
+    <Link href="/tictactoe">
+      <a style={linkStyle}>Tic-Tac-Toe</a>
+    </Link>
   </div>
 );
 

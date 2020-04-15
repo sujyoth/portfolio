@@ -1,14 +1,6 @@
 import React from 'react';
 import Layout from "../components/MyLayout";
 
-export default function tictactoe() {
-  return (
-    <Layout>
-      <Game />
-    </Layout>
-  );
-}
-
 function Square(props) {
   return (
     <>
@@ -18,7 +10,7 @@ function Square(props) {
       >
         {props.value}
       </button>
-      
+
       <style jsx>{`   
         .square {
           background: #fff;
@@ -193,4 +185,10 @@ function calculateWinner(squares) {
   return null;
 }
 
-// ========================================
+export default function tictactoe() {
+  return (
+    <Layout>
+      <Game />
+    </Layout>
+  );
+}

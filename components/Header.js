@@ -6,6 +6,9 @@ const linkStyle = {
 
 const Header = () => (
   <div>
+    <div>
+      Sujyoth Karkera
+    </div>
     <Link href="/">
       <a style={linkStyle}>Home</a>
     </Link>

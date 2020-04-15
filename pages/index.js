@@ -1,77 +1,115 @@
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
-import fetch from 'isomorphic-unfetch';
 
-const PostLink = ({ show }) => (
-  <li>
-    <Link href="/p/[id]" as={`/p/${show.id}`}>
-      <a>{show.name}</a>
-    </Link>
-    <style jsx>{`
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
+const Splash = (props) => {
+  return (
+    <div className="splash">
+      <div className="container">
 
-      a {
-        text-decoration: none;
-        color: blue;
-        font-family: 'Arial';
-      }
+        <div className="splashTextContainer">
+          <div className="splashText">
+            HEY, I'M SUJYOTH!
+          </div>
+          <div className="splashTextLine" />
+        </div>
 
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
-  </li>
-);
+        <div className="splashTextContainer">
+          <div className="splashText">
+            I AM A SOFTWARE DEV
+          </div>
+          <div className="splashTextLine" />
+        </div>
 
-const Index = props => (
-  <Layout>
-    <h1>Batman TV Shows</h1>
-    <ul>
-      {
-        props.shows.map(show => (
-          <PostLink key={show.id} show={show} />
-        ))
-      }
-    </ul>
-    <style jsx>{`
-        h1,
-        a {
-          font-family: 'Arial';
-        }
+        <div className="splashTextContainer">
+          <div className="splashText">
+            AND NLP ENTHUSIAST.
+          </div>
+          <div className="splashTextLine" />
+        </div>
 
-        ul {
+      </div>
+
+      <style jsx>{`
+        .splash {
+          position: fixed;
           padding: 0;
+          margin: 0;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;  
+
+          top: 0;
+          left: 0;
+
+          width: 100%;
+          height: 100%;         
+          background: #00143b;
         }
 
-        li {
-          list-style: none;
-          margin: 5px 0;
+        .container {
+          position: fixed;
+          padding: 0;
+          margin: 0;
+
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+          justify-content: center;
+          align-items: center;   
         }
 
-        a {
-          text-decoration: none;
-          color: blue;
+        .splashText {
+          font-size: 50px;
+          font-family: impact;
+          color: #fff;
+
+          width: 70%;
+          padding: 10px;
+
+          text-align: center;
+          display: inline-block;
         }
 
-        a:hover {
-          opacity: 0.6;
+        .splashTextLine {
+          background: #70005d;
+          width: 70%;
+          height: 10px;
+        }
+
+        .splashTextContainer {
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+          justify-content: center;
+          align-items: center;   
         }
       `}</style>
-  </Layout>
-);
+    </div>
+  );
+}
 
-Index.getInitialProps = async function () {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-  const data = await res.json();
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isSplashVisible: true };
+  }
 
-  console.log(`Show data fetched. Count: ${data.length}`);
+  removeSplash = () => {
+    //this.setState({ isSplashVisible: false });
+  }
 
-  return {
-    shows: data.map(entry => entry.show)
-  };
-};
+  render() {
+    var display;
+    if (this.state.isSplashVisible) {
+      setTimeout(this.removeSplash, 5000);
+      display = <Splash />;
+    } else {
+      display = <div>Helooooooooooooo</div>;
+    }
+
+    return (display);
+  }
+}
 
 export default Index;

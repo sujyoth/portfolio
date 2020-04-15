@@ -50,6 +50,10 @@ const Splash = (props) => {
           width: 100%;
           height: 100%;         
           background: #00143b;
+
+          animation: 0.3s linear fadeOut;
+          animation-delay: 3.0s;
+          animation-fill-mode: both;
         }
 
         .container {
@@ -127,12 +131,22 @@ const Splash = (props) => {
 
         @keyframes slideUp {
           0% {
-            opacity: 0%;
+            opacity: 0;
             transform: translateY(40%);
           }
           100% {
             opacity: 100%;
             transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeOut {
+          0% {
+            opacity: 100%;
+          }
+          100% {
+            opacity: 0%;
+            visibility: hidden;
           }
         }
       `}</style>
@@ -158,6 +172,7 @@ class Index extends React.Component {
     return (
       <div className="homeContainer" >
         {this.state.isSplashVisible && <Splash />}
+        <Splash />
         <div>Helooooooooooooo</div>
       </div>
     );

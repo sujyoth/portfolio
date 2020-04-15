@@ -147,6 +147,7 @@ const Splash = (props) => {
           100% {
             opacity: 0%;
             visibility: hidden;
+            display: none;
           }
         }
       `}</style>
@@ -166,13 +167,12 @@ class Index extends React.Component {
 
   render() {
     if (this.state.isSplashVisible) {
-      setTimeout(this.removeSplash, 3000);
+      setTimeout(this.removeSplash, 3300);
     }
 
     return (
       <div className="homeContainer" >
         {this.state.isSplashVisible && <Splash />}
-        <Splash />
         <div>Helooooooooooooo</div>
       </div>
     );

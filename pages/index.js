@@ -12,24 +12,24 @@ const Splash = (props) => {
         </div>
 
         <div className="splashTextContainer">
-          <div className="splashText">
+          <div id="animatedText1" className="splashText">
             HEY, I'M SUJYOTH!
           </div>
-          <div className="splashTextLine" />
+          <div id="animatedLine1" className="splashTextLine" />
         </div>
 
         <div className="splashTextContainer">
-          <div className="splashText">
+          <div id="animatedText2" className="splashText">
             I AM A SOFTWARE DEV
           </div>
-          <div className="splashTextLine" />
+          <div id="animatedLine2" className="splashTextLine" />
         </div>
 
         <div className="splashTextContainer">
-          <div className="splashText">
+          <div id="animatedText3" className="splashText">
             AND NLP ENTHUSIAST.
           </div>
-          <div className="splashTextLine" />
+          <div id="animatedLine3" className="splashTextLine" />
         </div>
 
       </div>
@@ -81,16 +81,39 @@ const Splash = (props) => {
         .splashTextLine {
           background: #ff99ee;
           width: 100%;
-          height: 1vh;
+          height: 10px;
+
+          animation: 0.5s rollFromLeft;
+          animation-fill-mode: backwards;
+
+          transform-origin: left;
+        }
+
+        #animatedLine2 {
+          animation-delay: 0.5s;
+        }
+
+        #animatedLine3 {
+          animation-delay: 1.0s;
         }
 
         .splashTextContainer {
           display: flex;
           flex-direction: column;
-          
-          justify-content: center;
-          align-items: center;   
+
+          align-items: left;
         }
+
+        @keyframes rollFromLeft {
+            0% {
+                transform: scaleX(0);
+            }
+            100% {
+                transform: scaleX(100%);
+            }
+        }
+
+        
       `}</style>
     </div>
   );

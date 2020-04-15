@@ -8,7 +8,7 @@ const Splash = (props) => {
       <div className="container">
 
         <div className="logoContainer">
-        {/* TODO */}
+          {/* TODO */}
         </div>
 
         <div className="splashTextContainer">
@@ -68,14 +68,27 @@ const Splash = (props) => {
           font-size: 3.5vw;
           font-family: impact;
           color: #fff;
-
           padding: 10px;
 
           text-align: center;
           display: inline-block;
-
           overflow: hidden;
           white-space: nowrap;
+
+          animation: 0.3s ease slideUp;
+          animation-fill-mode: both;
+        }
+
+        #animatedText1 {
+          animation-delay: 0.2s;
+        }
+
+        #animatedText2 {
+          animation-delay: 0.6s;
+        }
+
+        #animatedText3 {
+          animation-delay: 1.0s;
         }
 
         .splashTextLine {
@@ -85,16 +98,15 @@ const Splash = (props) => {
 
           animation: 0.5s rollFromLeft;
           animation-fill-mode: backwards;
-
           transform-origin: left;
         }
 
         #animatedLine2 {
-          animation-delay: 0.5s;
+          animation-delay: 0.4s;
         }
 
         #animatedLine3 {
-          animation-delay: 1.0s;
+          animation-delay: 0.8s;
         }
 
         .splashTextContainer {
@@ -105,15 +117,24 @@ const Splash = (props) => {
         }
 
         @keyframes rollFromLeft {
-            0% {
-                transform: scaleX(0);
-            }
-            100% {
-                transform: scaleX(100%);
-            }
+          0% {
+            transform: scaleX(0);
+          }
+          100% {
+            transform: scaleX(100%);
+          }
         }
 
-        
+        @keyframes slideUp {
+          0% {
+            opacity: 0%;
+            transform: translateY(40%);
+          }
+          100% {
+            opacity: 100%;
+            transform: translateY(0);
+          }
+        }
       `}</style>
     </div>
   );
@@ -126,19 +147,20 @@ class Index extends React.Component {
   }
 
   removeSplash = () => {
-    //this.setState({ isSplashVisible: false });
+    this.setState({ isSplashVisible: false });
   }
 
   render() {
-    var display;
     if (this.state.isSplashVisible) {
-      setTimeout(this.removeSplash, 5000);
-      display = <Splash />;
-    } else {
-      display = <div>Helooooooooooooo</div>;
+      setTimeout(this.removeSplash, 3000);
     }
 
-    return (display);
+    return (
+      <div className="homeContainer" >
+        {this.state.isSplashVisible && <Splash />}
+        <div>Helooooooooooooo</div>
+      </div>
+    );
   }
 }
 

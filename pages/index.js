@@ -4,7 +4,12 @@ import Link from 'next/link';
 const Splash = (props) => {
   return (
     <div className="splash">
+
       <div className="container">
+
+        <div className="logoContainer">
+        {/* TODO */}
+        </div>
 
         <div className="splashTextContainer">
           <div className="splashText">
@@ -60,7 +65,7 @@ const Splash = (props) => {
         }
 
         .splashText {
-          font-size: 50px;
+          font-size: 3.5vw;
           font-family: impact;
           color: #fff;
 
@@ -74,9 +79,9 @@ const Splash = (props) => {
         }
 
         .splashTextLine {
-          background: #70005d;
+          background: #ff99ee;
           width: 100%;
-          height: 10px;
+          height: 1vh;
         }
 
         .splashTextContainer {

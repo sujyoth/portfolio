@@ -54,7 +54,7 @@ const Splash = (props) => {
 
           display: flex;
           flex-direction: column;
-          width: 90%;
+          width: 60%;
           justify-content: center;
           align-items: center;   
         }
@@ -64,23 +64,25 @@ const Splash = (props) => {
           font-family: impact;
           color: #fff;
 
-          width: 70%;
           padding: 10px;
 
           text-align: center;
           display: inline-block;
+
+          overflow: hidden;
+          white-space: nowrap;
         }
 
         .splashTextLine {
           background: #70005d;
-          width: 70%;
+          width: 100%;
           height: 10px;
         }
 
         .splashTextContainer {
           display: flex;
           flex-direction: column;
-          width: 90%;
+          
           justify-content: center;
           align-items: center;   
         }

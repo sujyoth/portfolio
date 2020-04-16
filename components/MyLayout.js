@@ -1,11 +1,7 @@
 import Header from './Header';
 
-const layoutStyle = {
-  padding: 20,
-};
-
 const Layout = props => (
-  <div style={layoutStyle}>
+  <div className="layout">
     <Header />
     {props.children}
   </div>

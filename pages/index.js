@@ -1,5 +1,4 @@
 import Layout from '../components/MyLayout';
-import Link from 'next/link';
 
 const Splash = (props) => {
   return (
@@ -46,6 +45,7 @@ const Splash = (props) => {
 
           top: 0;
           left: 0;
+          z-index: 3000;
 
           width: 100%;
           height: 100%;         
@@ -173,7 +173,11 @@ class Index extends React.Component {
     return (
       <div className="homeContainer" >
         {this.state.isSplashVisible && <Splash />}
-        <div>Helooooooooooooo</div>
+        <Layout>
+          <div>
+            Carousel
+          </div>
+        </Layout>
       </div>
     );
   }

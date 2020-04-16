@@ -1,4 +1,5 @@
 import Layout from '../components/MyLayout';
+import { Carousel } from 'react-responsive-carousel';
 
 const Splash = (props) => {
   return (
@@ -159,6 +160,28 @@ class ProjectsCarousel extends React.Component {
   render() {
     return (
       <div className="carouselContainer">
+        <Carousel 
+          showStatus={false}
+          showThumbs={false}
+          infiniteLoop={true}
+          dynamicHeight={true}
+          emulateTouch={true}
+          useKeyboardArrows={true}
+        >
+          <div className="slideContainer">
+            <div className="mainText">VOTE</div>
+          </div>
+          <div className="slideContainer">
+            <div className="mainText">BOOKWORM</div>
+          </div>
+          <div className="slideContainer">
+            <div className="mainText">LYRICVIS</div>
+          </div>
+          <div className="slideContainer">
+            <div className="mainText">SURVEILLANCE CAR</div>
+          </div>
+        </Carousel>
+
         <style jsx>{`
           .carouselContainer {
             position: fixed;
@@ -172,6 +195,24 @@ class ProjectsCarousel extends React.Component {
             height: 100%;
 
             background: #158;
+          }
+
+          .slideContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 100vh;
+            background: #106;
+          }
+
+          .mainText {
+            font-size: 70px;
+            font-family: Verdana;
+            color: #fff;
+            align-self: center;
           }
         `}</style>
       </div>
@@ -195,11 +236,13 @@ class Index extends React.Component {
     }
 
     return (
-      <div className="homeContainer" >
-        {this.state.isSplashVisible && <Splash />}
-        <Layout>
-          <ProjectsCarousel />
-        </Layout>
+      <div>
+        <div className="homeContainer" >
+          {this.state.isSplashVisible && <Splash />}
+          <Layout>
+            <ProjectsCarousel />
+          </Layout>
+        </div>
       </div>
     );
   }

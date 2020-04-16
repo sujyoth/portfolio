@@ -35,8 +35,7 @@ const Header = () => (
       }
 
       .headerElement {
-        font-family: verdana;
-        font-weight: 1000;
+        font-family: Verdana;
         font-size: 12px;
 
         color: #fff;

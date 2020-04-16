@@ -155,6 +155,30 @@ const Splash = (props) => {
   );
 }
 
+class ProjectsCarousel extends React.Component {
+  render() {
+    return (
+      <div className="carouselContainer">
+        <style jsx>{`
+          .carouselContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            padding: 0;
+            margin: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: #158;
+          }
+        `}</style>
+      </div>
+    );
+  }
+}
+
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -174,9 +198,7 @@ class Index extends React.Component {
       <div className="homeContainer" >
         {this.state.isSplashVisible && <Splash />}
         <Layout>
-          <div>
-            Carousel
-          </div>
+          <ProjectsCarousel />
         </Layout>
       </div>
     );

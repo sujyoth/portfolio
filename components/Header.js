@@ -36,10 +36,10 @@ const Header = () => (
 
       .headerElement {
         font-family: verdana;
-        font-weight: 500;
+        font-weight: 1000;
         font-size: 12px;
 
-        color: #000;
+        color: #fff;
 
         padding-top: 20px;
         padding-bottom: 20px;

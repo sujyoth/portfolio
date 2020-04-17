@@ -19,10 +19,10 @@ class Index extends React.Component {
 
     return (
       <div>
-          {this.state.isSplashVisible && <Splash />}
-          <Layout>
-            <ProjectsCarousel />
-          </Layout>
+        {this.state.isSplashVisible && <Splash />}
+        <Layout>
+          <ProjectsCarousel />
+        </Layout>
       </div>
     );
   }

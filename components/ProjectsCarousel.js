@@ -57,20 +57,20 @@ export default class ProjectsCarousel extends React.Component {
           <div className="slideContainer">
             <div>
               <div className="mainContainer">
-                <div className="mainText">VOTE</div>
+                <div className="mainText">vote</div>
                 <div className="mainTextLine" />
               </div>
               <div className="subText">OPINION-BASED QUESTION GENERATION</div>
             </div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">BOOKWORM</div>
+            <div className="mainText">BookwoRM</div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">LYRICVIS</div>
+            <div className="mainText">Lyricvis</div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">ROVER</div>
+            <div className="mainText">roVer</div>
           </div>
         </Carousel>
 
@@ -110,8 +110,7 @@ export default class ProjectsCarousel extends React.Component {
 
           .mainText {
             font-size: 40px;
-            font-family: Brandon;
-            font-weight: 700;
+            font-family: Anisette;
             letter-spacing: 2px;
             color: #fff;
           }
@@ -131,6 +130,8 @@ export default class ProjectsCarousel extends React.Component {
             font-family: Brandon;
             letter-spacing: 2px;
             color: #fff;
+
+            display: none;
           }
 
           @media screen and (min-width: 40em) {
@@ -140,6 +141,10 @@ export default class ProjectsCarousel extends React.Component {
 
             .mainTextLine {
               height: 18px;
+            }
+
+            .subText {
+              display: block;
             }
           }
 

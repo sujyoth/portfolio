@@ -160,6 +160,7 @@ export default class ProjectsCarousel extends React.Component {
           emulateTouch={true}
           useKeyboardArrows={true}
           swipeScrollTolerance={2}
+          showIndicators={false}
           selectedItem={this.state.currentSlide}
           onChange={this.updateCurrentSlide}
         >

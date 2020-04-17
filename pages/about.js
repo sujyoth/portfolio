@@ -4,7 +4,7 @@ export default function About() {
   return (
     <Layout>
       <div className="aboutContainer">
-        <h1 style={{color: "white"}}>This is the about page</h1>
+        <h1 style={{color: '#5454FF'}}>This is the about page</h1>
       </div>
       <style jsx>{`
         .aboutContainer {
@@ -22,7 +22,7 @@ export default function About() {
 
           width: 100%;
           height: 100%;         
-          background: #89143b;
+          background: #00143b;
         }
       `}</style>
     </Layout>

@@ -67,7 +67,7 @@ const Splash = (props) => {
         }
 
         .splashText {
-          font-size: 3.5vw;
+          font-size: 20px;
           font-family: impact;
           color: #fff;
           padding: 10px;
@@ -150,10 +150,20 @@ const Splash = (props) => {
         }
 
         @media screen and (min-width: 40em) {
-            .splashTextLine {
-              height: 10px;
-            }
+          .splashTextLine {
+            height: 10px;
           }
+
+          .splashText {
+            font-size: 37px;
+          }
+        }
+
+        @media screen and (min-width: 52em) {
+          .splashText {
+            font-size: 50px;
+          }
+        }
       `}</style>
     </div>
   );

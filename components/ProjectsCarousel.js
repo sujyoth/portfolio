@@ -4,8 +4,11 @@ export default class ProjectsCarousel extends React.Component {
   constructor(props) {
     super(props);
 
+    this.backgroundColors = ['#5454ff', '#ffba42', '#ff636b', '#00143b'];
+
     this.state = {
-      currentSlide: 3
+      currentSlide: 3,
+      backgroundColor: this.backgroundColors[0]
     };
 
     setTimeout(() => this.setState({currentSlide: 0}), 3300);
@@ -14,12 +17,14 @@ export default class ProjectsCarousel extends React.Component {
   next = () => {
     this.setState((state) => ({
       currentSlide: state.currentSlide + 1,
+      backgroundColor: this.backgroundColors[state.currentSlide + 1]
     }));
   };
 
   prev = () => {
     this.setState((state) => ({
       currentSlide: state.currentSlide - 1,
+      backgroundColor: this.backgroundColors[state.currentSlide - 1]
     }));
   };
 
@@ -29,6 +34,7 @@ export default class ProjectsCarousel extends React.Component {
     if (currentSlide !== index) {
       this.setState({
         currentSlide: index,
+        backgroundColor: this.backgroundColors[index]
       });
       console.log("Animating slide: " + index);
     }
@@ -83,19 +89,28 @@ export default class ProjectsCarousel extends React.Component {
 
             width: 100%;
             height: 100vh;
-            background: #106;
+            background: ${this.state.backgroundColor};
+
+            animation: 1.0s colorChange;
+            animation-fill-mode: forwards;
+            transform-origin: left;
           }
 
           .mainText {
             font-size: 40px;
             font-family: Verdana;
             color: #fff;
-            align-self: center;
           }
 
           @media screen and (min-width: 40em) {
             .mainText {
               font-size: 100px;
+            }
+          }
+
+          @keyframes colorChange {
+            100% {
+              background: ${this.state.backgroundColor};
             }
           }
         `}</style>

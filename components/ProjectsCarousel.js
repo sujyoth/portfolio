@@ -55,7 +55,13 @@ export default class ProjectsCarousel extends React.Component {
           onChange={this.updateCurrentSlide}
         >
           <div className="slideContainer">
-            <div className="mainText">VOTE</div>
+            <div>
+              <div className="mainContainer">
+                <div className="mainText">VOTE</div>
+                <div className="mainTextLine" />
+              </div>
+              <div className="subText">OPINION-BASED QUESTION GENERATION</div>
+            </div>
           </div>
           <div className="slideContainer">
             <div className="mainText">BOOKWORM</div>
@@ -96,6 +102,12 @@ export default class ProjectsCarousel extends React.Component {
             transform-origin: left;
           }
 
+          .mainContainer {
+            padding-top: 14px;
+            margin-bottom: 20px;
+            display: inline-block;
+          }
+
           .mainText {
             font-size: 40px;
             font-family: Brandon;
@@ -104,9 +116,30 @@ export default class ProjectsCarousel extends React.Component {
             color: #fff;
           }
 
+          .mainTextLine {
+            background: #fff;
+            width: 100%;
+            height: 8px;
+
+            animation: 0.5s rollFromLeft;
+            animation-fill-mode: backwards;
+            transform-origin: left;
+          }
+
+          .subText {
+            font-size: 12px;
+            font-family: Brandon;
+            letter-spacing: 2px;
+            color: #fff;
+          }
+
           @media screen and (min-width: 40em) {
             .mainText {
               font-size: 100px;
+            }
+
+            .mainTextLine {
+              height: 18px;
             }
           }
 

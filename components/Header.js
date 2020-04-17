@@ -82,7 +82,7 @@ const Header = () => (
 
       a {
         font-family: Brandon;
-        font-size: 12px;
+        font-size: 11px;
         position: relative;
         color: #fff;
         text-decoration: none;

@@ -11,7 +11,7 @@ export default class ProjectsCarousel extends React.Component {
       backgroundColor: this.backgroundColors[0]
     };
 
-    setTimeout(() => this.setState({currentSlide: 0}), 3300);
+    setTimeout(() => this.setState({ currentSlide: 0 }), 3300);
   }
 
   next = () => {
@@ -58,19 +58,31 @@ export default class ProjectsCarousel extends React.Component {
             <div>
               <div className="mainContainer">
                 <div className="mainText">vote</div>
-                <div className="mainTextLine" />
+                <div className="mainTextLine line0" />
               </div>
-              <div className="subText">OPINION-BASED QUESTION GENERATION</div>
+              <div className="subText text0">Opinion-based question generator</div>
             </div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">BookwoRM</div>
+            <div className="mainContainer">
+              <div className="mainText">BookwoRM</div>
+              <div className="mainTextLine line1" />
+            </div>
+            <div className="subText text1">Local book-sharing app</div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">Lyricvis</div>
+            <div className="mainContainer">
+              <div className="mainText">Lyricvis</div>
+              <div className="mainTextLine line2" />
+            </div>
+            <div className="subText text2">Song suggestion and lyrics fetching app</div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">roVer</div>
+            <div className="mainContainer">
+              <div className="mainText">roVer</div>
+              <div className="mainTextLine line3" />
+            </div>
+            <div className="subText text3">Surveillance Car based on Raspberry Pi</div>
           </div>
         </Carousel>
 
@@ -97,9 +109,7 @@ export default class ProjectsCarousel extends React.Component {
             height: 100vh;
             background: ${this.state.backgroundColor};
 
-            animation: 1.0s colorChange;
-            animation-fill-mode: forwards;
-            transform-origin: left;
+            transition: background-color 0.3s ease;
           }
 
           .mainContainer {
@@ -120,8 +130,9 @@ export default class ProjectsCarousel extends React.Component {
             width: 100%;
             height: 8px;
 
-            animation: 0.5s rollFromLeft;
-            animation-fill-mode: backwards;
+            animation: 1s ease rollFromLeft;
+            animation-delay: 0.4s;
+            animation-fill-mode: both;
             transform-origin: left;
           }
 
@@ -130,7 +141,7 @@ export default class ProjectsCarousel extends React.Component {
             font-family: Brandon;
             letter-spacing: 2px;
             color: #fff;
-
+            text-transform: uppercase;
             display: none;
           }
 
@@ -151,6 +162,42 @@ export default class ProjectsCarousel extends React.Component {
           @keyframes colorChange {
             100% {
               background: ${this.state.backgroundColor};
+            }
+          }
+
+          @keyframes rollFromLeft {
+            0% {
+              transform: scaleX(0);
+            }
+            100% {
+              transform: scaleX(100%);
+            }
+          }
+
+          @keyframes rollToLeft {
+            0% {
+              transform: scaleX(100%);
+            }
+            100% {
+              transform: scaleX(0);
+            }
+          }
+
+          @keyframes fadeIn {
+            0% {
+              opacity: 0%;
+            }
+            100% {
+              opacity: 100%;
+            }
+          }
+
+          @keyframes fadeOut {
+            0% {
+              opacity: 100%;
+            }
+            100% {
+              opacity: 0%;
             }
           }
         `}</style>

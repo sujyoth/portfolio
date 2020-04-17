@@ -15,6 +15,16 @@ const Header = () => (
       </Link>
     </div>
     <style jsx>{`
+      @font-face {
+        font-family: 'Brandon';
+        src: url('/fonts/Brandon-Black.otf');
+      }
+
+      @font-face {
+        font-family: 'Anisette';
+        src: url('/fonts/Anisette-Black.ttf');
+      }
+
       .header {
         position: fixed;
 
@@ -71,11 +81,12 @@ const Header = () => (
       }
 
       a {
-        font-family: Verdana;
+        font-family: Brandon;
         font-size: 12px;
         position: relative;
         color: #fff;
         text-decoration: none;
+        letter-spacing: 2px;
 
         padding-top: 20px;
         padding-bottom: 20px;

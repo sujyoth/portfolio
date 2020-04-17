@@ -98,7 +98,9 @@ export default class ProjectsCarousel extends React.Component {
 
           .mainText {
             font-size: 40px;
-            font-family: Verdana;
+            font-family: Brandon;
+            font-weight: 700;
+            letter-spacing: 2px;
             color: #fff;
           }
 

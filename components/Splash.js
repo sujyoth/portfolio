@@ -68,7 +68,9 @@ const Splash = (props) => {
 
         .splashText {
           font-size: 20px;
-          font-family: impact;
+          font-family: Brandon;
+          font-weight: 400;
+          letter-spacing: 2px;
           color: #fff;
           padding: 10px;
 

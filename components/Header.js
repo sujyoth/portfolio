@@ -1,16 +1,17 @@
 import Link from 'next/link';
+import UnderlineText from './UnderlineText';
 
 const Header = () => (
   <div className="header">
     <div className="nav">
       <Link href="/">
-        <a id="elem1" className="headerElement">
+        <a id="elem1" >
           <span className="nameFull">SUJYOTH KARKERA</span>
           <span className="nameShort">SUJYOTH K.</span>
         </a>
       </Link>
       <Link href="/about">
-        <a id="elem2" className="headerElement">ABOUT</a>
+        <a id="elem2">ABOUT</a>
       </Link>
     </div>
     <style jsx>{`
@@ -32,16 +33,6 @@ const Header = () => (
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-      }
-
-      .headerElement {
-        font-family: Verdana;
-        font-size: 12px;
-
-        color: #fff;
-
-        padding-top: 20px;
-        padding-bottom: 20px;
       }
 
       #elem1 {
@@ -77,6 +68,36 @@ const Header = () => (
           padding-left: 90px;
           padding-right: 90px;
         }
+      }
+
+      a {
+        font-family: Verdana;
+        font-size: 12px;
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: 17px;
+        left: 0;
+        background-color: #fff;
+        visibility: hidden;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: all 0.2s ease;
+      }
+
+      a:hover:before {
+        visibility: visible;
+        transform: scaleX(1);
       }
     `}</style>
   </div>

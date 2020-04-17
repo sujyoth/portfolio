@@ -39,12 +39,11 @@ const CarouselItem = (props) => {
 
         .mainTextLine {
           background: #fff;
-          width: 100%;
+          width: ${props.lineWidthPercentage}%;
           height: 8px;
-
-          animation: 1s ease rollFromLeft;
-          animation-delay: 0.4s;
-          animation-fill-mode: both;
+          
+          transition: width 1s ease;
+          transition-delay: 0.5s;
           transform-origin: left;
         }
 
@@ -55,6 +54,11 @@ const CarouselItem = (props) => {
           color: #fff;
           text-transform: uppercase;
           display: none;
+
+          opacity: ${props.subTextOpacity};
+
+          transition: opacity 1s ease;
+          transition-delay: 0.7s;
         }
 
         @media screen and (min-width: 40em) {
@@ -70,42 +74,6 @@ const CarouselItem = (props) => {
             display: block;
           }
         }
-
-        @keyframes rollFromLeft {
-          0% {
-            transform: scaleX(0);
-          }
-          100% {
-            transform: scaleX(100%);
-          }
-        }
-
-        @keyframes rollToLeft {
-          0% {
-            transform: scaleX(100%);
-          }
-          100% {
-            transform: scaleX(0);
-          }
-        }
-
-        @keyframes fadeIn {
-          0% {
-            opacity: 0%;
-          }
-          100% {
-            opacity: 100%;
-          }
-        }
-
-        @keyframes fadeOut {
-          0% {
-            opacity: 100%;
-          }
-          100% {
-            opacity: 0%;
-          }
-        }
       `}</style>
     </div>
   );
@@ -119,10 +87,15 @@ export default class ProjectsCarousel extends React.Component {
 
     this.state = {
       currentSlide: 3,
-      backgroundColor: this.backgroundColors[0]
+      backgroundColor: this.backgroundColors[0],
+      lineWidthPercentages: Array(4).fill(0),
+      subtextOpacities: Array(4).fill(0)
     };
 
-    setTimeout(() => this.setState({ currentSlide: 0 }), 3300);
+    setTimeout(() => {
+      this.setState({ currentSlide: 0 });
+      this.updateCurrentSlide(0, true);
+    }, 3300);
   }
 
   next = () => {
@@ -139,15 +112,39 @@ export default class ProjectsCarousel extends React.Component {
     }));
   };
 
-  updateCurrentSlide = (index) => {
+  updateCurrentSlide = (index, isInitial) => {
     const { currentSlide } = this.state;
 
     if (currentSlide !== index) {
+      const lineWidthPercentages = this.state.lineWidthPercentages.slice();
+      const subtextOpacities = this.state.subtextOpacities.slice();
+
+      // currentSlide is actually the previous slide now
+      // index is actually the current slide now
+      lineWidthPercentages[currentSlide] = 0;
+      lineWidthPercentages[index] = 100;
+
+      subtextOpacities[currentSlide] = 0;
+      subtextOpacities[index]=1;
+
       this.setState({
         currentSlide: index,
-        backgroundColor: this.backgroundColors[index]
+        backgroundColor: this.backgroundColors[index],
+        lineWidthPercentages: lineWidthPercentages,
+        subtextOpacities: subtextOpacities
       });
       console.log("Animating slide: " + index);
+    } else if (isInitial) {
+      const lineWidthPercentages = this.state.lineWidthPercentages.slice();
+      const subtextOpacities = this.state.subtextOpacities.slice();
+
+      lineWidthPercentages[index] = 100;
+      subtextOpacities[index] = 1;
+
+      this.setState({
+        lineWidthPercentages: lineWidthPercentages,
+        subtextOpacities: subtextOpacities
+      });
     }
   };
 
@@ -165,24 +162,34 @@ export default class ProjectsCarousel extends React.Component {
           selectedItem={this.state.currentSlide}
           onChange={this.updateCurrentSlide}
         >
+
           <CarouselItem 
             mainText="vote" 
             subText="Opinion-based question generator"
-            backgroundColor={this.state.backgroundColor} />
+            backgroundColor={this.state.backgroundColor}
+            lineWidthPercentage={this.state.lineWidthPercentages[0]}
+            subTextOpacity={this.state.subtextOpacities[0]} />
+
           <CarouselItem 
             mainText="BookwoRM" 
             subText="Local book-sharing app" 
-            backgroundColor={this.state.backgroundColor} />
+            backgroundColor={this.state.backgroundColor} 
+            lineWidthPercentage={this.state.lineWidthPercentages[1]}
+            subTextOpacity={this.state.subtextOpacities[1]} />
 
           <CarouselItem  
             mainText="Lyricvis" 
             subText="Song suggestion and lyrics fetching app" 
-            backgroundColor={this.state.backgroundColor} />
+            backgroundColor={this.state.backgroundColor} 
+            lineWidthPercentage={this.state.lineWidthPercentages[2]}
+            subTextOpacity={this.state.subtextOpacities[2]} />
 
           <CarouselItem 
             mainText="roVer" 
             subText="Surveillance Car based on Raspberry Pi" 
-            backgroundColor={this.state.backgroundColor} />
+            backgroundColor={this.state.backgroundColor} 
+            lineWidthPercentage={this.state.lineWidthPercentages[3]}
+            subTextOpacity={this.state.subtextOpacities[3]} />
 
         </Carousel>
 

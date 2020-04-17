@@ -8,7 +8,7 @@ export default class ProjectsCarousel extends React.Component {
       currentSlide: 3
     };
 
-    setTimeout(() => this.setState({currentSlide: 0}), 3500);
+    setTimeout(() => this.setState({currentSlide: 0}), 3300);
   }
 
   next = () => {
@@ -44,6 +44,7 @@ export default class ProjectsCarousel extends React.Component {
           dynamicHeight={true}
           emulateTouch={true}
           useKeyboardArrows={true}
+          swipeScrollTolerance={2}
           selectedItem={this.state.currentSlide}
           onChange={this.updateCurrentSlide}
         >
@@ -57,7 +58,7 @@ export default class ProjectsCarousel extends React.Component {
             <div className="mainText">LYRICVIS</div>
           </div>
           <div className="slideContainer">
-            <div className="mainText">SURVEILLANCE CAR</div>
+            <div className="mainText">ROVER</div>
           </div>
         </Carousel>
 
@@ -72,8 +73,6 @@ export default class ProjectsCarousel extends React.Component {
 
             width: 100%;
             height: 100%;
-
-            background: #158;
           }
 
           .slideContainer {
@@ -88,10 +87,16 @@ export default class ProjectsCarousel extends React.Component {
           }
 
           .mainText {
-            font-size: 70px;
+            font-size: 40px;
             font-family: Verdana;
             color: #fff;
             align-self: center;
+          }
+
+          @media screen and (min-width: 40em) {
+            .mainText {
+              font-size: 100px;
+            }
           }
         `}</style>
       </div>

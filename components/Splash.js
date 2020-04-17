@@ -96,7 +96,7 @@ const Splash = (props) => {
         .splashTextLine {
           background: #ff99ee;
           width: 100%;
-          height: 10px;
+          height: 4px;
 
           animation: 0.5s rollFromLeft;
           animation-fill-mode: backwards;
@@ -148,6 +148,12 @@ const Splash = (props) => {
             display: none;
           }
         }
+
+        @media screen and (min-width: 40em) {
+            .splashTextLine {
+              height: 10px;
+            }
+          }
       `}</style>
     </div>
   );

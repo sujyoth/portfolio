@@ -1,7 +1,39 @@
 import { Carousel } from 'react-responsive-carousel';
 
 export default class ProjectsCarousel extends React.Component {
-  current = -1;
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentSlide: 3
+    };
+
+    setTimeout(() => this.setState({currentSlide: 0}), 3500);
+  }
+
+  next = () => {
+    this.setState((state) => ({
+      currentSlide: state.currentSlide + 1,
+    }));
+  };
+
+  prev = () => {
+    this.setState((state) => ({
+      currentSlide: state.currentSlide - 1,
+    }));
+  };
+
+  updateCurrentSlide = (index) => {
+    const { currentSlide } = this.state;
+
+    if (currentSlide !== index) {
+      this.setState({
+        currentSlide: index,
+      });
+      console.log("Animating slide: " + index);
+    }
+  };
+
   render() {
     return (
       <div className="carouselContainer">
@@ -12,15 +44,8 @@ export default class ProjectsCarousel extends React.Component {
           dynamicHeight={true}
           emulateTouch={true}
           useKeyboardArrows={true}
-          renderIndicator={(onClickHandler, isSelected, index, label) => {
-            if (isSelected) {
-              console.log("Clicked slide: " + index);
-              if (this.current !== index) {
-                this.props.onSlideChange(index);
-              }
-              this.current = index;
-            }
-          }}
+          selectedItem={this.state.currentSlide}
+          onChange={this.updateCurrentSlide}
         >
           <div className="slideContainer">
             <div className="mainText">VOTE</div>

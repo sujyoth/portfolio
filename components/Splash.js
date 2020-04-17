@@ -32,6 +32,18 @@ const Splash = (props) => {
       </div>
 
       <style jsx>{`
+        @font-face {
+          font-family: 'Brandon';
+          src: url('/fonts/Brandon-Black.otf');
+        }
+
+        @font-face {
+          font-family: 'Anisette';
+          src: url('/fonts/Anisette-Black.ttf');
+        }
+
+
+
         .splash {
           position: fixed;
           padding: 0;

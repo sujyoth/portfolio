@@ -135,6 +135,7 @@ export default class ProjectsCarousel extends React.Component {
       });
       console.log("Animating slide: " + index);
     } else if (isInitial) {
+      // This is only performed just after loading
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
       const subtextOpacities = this.state.subtextOpacities.slice();
 

@@ -1,5 +1,76 @@
 import { Carousel } from 'react-responsive-carousel';
 
+const Indicator = (props) => (
+  <div 
+    className={`${props.isSelected ? 'isSelected' : 'indicator'}`}
+    onClick={props.onClick}>
+    <style jsx>{`
+      .indicator {
+        background: #fff;
+        border-radius: 50%;
+
+        width: 8px;
+        height: 8px;
+
+        margin-left: 10px;
+        margin-right: 10px;
+
+        transition: transform 250ms ease 0s;
+        z-index: 2500;
+      }
+
+      .indicator:hover {
+        transform: scale(2.25);
+      }
+
+      .isSelected {
+        background: #fff;
+        border-radius: 50%;
+
+        width: 17px;
+        height: 17px;
+
+        margin-left: 10px;
+        margin-right: 10px;
+
+        transition:  none;
+        z-index: 2500;
+
+      }
+    `}</style>
+  </div>
+)
+
+const IndicatorBar = (props) => {
+  return (
+    <div className="indicatorContainer">
+      <Indicator isSelected={props.selected === 0 ? true : false} onClick={() => props.clickHandler(0)}/>
+      <Indicator isSelected={props.selected === 1 ? true : false} onClick={() => props.clickHandler(1)}/>
+      <Indicator isSelected={props.selected === 2 ? true : false} onClick={() => props.clickHandler(2)}/>
+      <Indicator isSelected={props.selected === 3 ? true : false} onClick={() => props.clickHandler(3)}/>
+      <style jsx>{`
+        .indicatorContainer {
+          position: absolute;
+          bottom: 10px;
+
+          width: 100%;
+          height: 80px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        @media screen and (min-width: 52em) {
+          .indicatorContainer {
+            height: 110px;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 const CarouselItem = (props) => {
   return (
     <div className="slideContainer">
@@ -113,6 +184,7 @@ export default class ProjectsCarousel extends React.Component {
   };
 
   updateCurrentSlide = (index, isInitial) => {
+    console.log("gxg", index);
     const { currentSlide } = this.state;
 
     if (currentSlide !== index) {
@@ -151,7 +223,7 @@ export default class ProjectsCarousel extends React.Component {
 
   render() {
     return (
-      <div className="carouselContainer">
+      <div className="carouselContainer" onClick={(e) => e.stopPropagation()}>
         <Carousel
           showStatus={false}
           showThumbs={false}
@@ -194,6 +266,10 @@ export default class ProjectsCarousel extends React.Component {
             subTextOpacity={this.state.subtextOpacities[3]} />
 
         </Carousel>
+
+        <IndicatorBar 
+          selected={this.state.currentSlide} 
+          clickHandler={this.updateCurrentSlide} />
 
         <style jsx>{`
           .carouselContainer {

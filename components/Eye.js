@@ -5,7 +5,7 @@ class Eye extends React.Component {
     this.state = {
       eyePosX: 350,
       eyePosY: 300,
-      eyeOutline: "M 0 300 Q 400 50 700 300 Q 400 50 0 300 Z" // initially closed
+      eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z" // initially closed
     }
 
     // for first open
@@ -22,7 +22,7 @@ class Eye extends React.Component {
     // for blinking
     setInterval(() => {
       this.setState({
-        eyeOutline: "M 0 300 Q 400 50 700 300 Q 400 50 0 300 Z" // close eyes
+        eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z" // close eyes
       });
 
       setTimeout(() => this.setState({
@@ -62,7 +62,7 @@ class Eye extends React.Component {
           }
 
           svg:hover path {
-            d: path("M0,300 Q400,50,700,300 Q400,50,0,300 Z");
+            d: path("M0,300 Q400,150,700,300 Q400,150,0,300 Z");
           }
 
           svg circle {

@@ -1,8 +1,10 @@
 import { Carousel } from 'react-responsive-carousel';
+import Eye from "../components/Eye";
+
 
 const Indicator = (props) => (
   <div 
-    className={`${props.isSelected ? 'isSelected' : 'indicator'}`}
+    className={props.isSelected ? 'isSelected' : 'indicator'}
     onClick={props.onClick}>
     <style jsx>{`
       .indicator {
@@ -74,6 +76,90 @@ const IndicatorBar = (props) => {
     </div>
   );
 }
+
+const EyeSheet = (props) => (
+  <div className="eyeSheet">
+    <div id="eye1" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye1" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye1" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye1" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye1" className="eyeContainer">
+      <Eye />
+    </div>
+    <style jsx>{`
+      .eyeSheet {
+        position: relative;
+        visibility: ${props.isVisible ? 'visible' : 'hidden'};
+        top: 25%;
+        width: 100%;
+        height: 50%;
+      }
+
+      .eyeContainer {
+        position: relative;
+        margin: 0px;
+      }
+
+      #eye1 {
+        top: 20%;
+        width: 5vw;
+        height: 5vw;
+      }
+
+      #eye2 {
+        top: 30%;
+        right: 60%;
+        width: 8vw;
+        height: 80vw;
+      }
+
+      #eye3 {
+        top: 10%;
+        left: 5%;
+        width: 10vw;
+        height: 10vw;
+      }
+
+      #eye4 {
+        top: 10px;
+        right: 5px;
+        width: 8vw;
+        height: 80vw;
+      }
+
+      #eye5 {
+        top: 10px;
+        right: 5px;
+        width: 8vw;
+        height: 80vw;
+      }
+    `}</style>
+  </div>
+)
+
+const Sheets = (props) => (
+  <div className="sheetsContainer">
+    <EyeSheet isVisible={props.selected === 3 ? true : false} />
+    <style jsx>{`
+      .sheetsContainer {
+        position: fixed;
+        top: 0;
+        left: 25%;
+        width: 50vw;
+        height: 100vh;
+        z-index: 800;        
+      }
+    `}</style>
+  </div>
+)
 
 const CarouselItem = (props) => {
   return (
@@ -279,6 +365,9 @@ export default class ProjectsCarousel extends React.Component {
         <IndicatorBar 
           selected={this.state.currentSlide} 
           clickHandler={this.updateCurrentSlide} />
+
+        <Sheets
+          selected={this.state.currentSlide} />
 
         <style jsx>{`
           .carouselContainer {

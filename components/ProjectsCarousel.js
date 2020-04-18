@@ -85,13 +85,13 @@ const EyeSheet = (props) => (
     <div id="eye1" className="eyeContainer">
       <Eye />
     </div>
-    <div id="eye1" className="eyeContainer">
+    <div id="eye2" className="eyeContainer">
       <Eye />
     </div>
-    <div id="eye1" className="eyeContainer">
+    <div id="eye3" className="eyeContainer">
       <Eye />
     </div>
-    <div id="eye1" className="eyeContainer">
+    <div id="eye4" className="eyeContainer">
       <Eye />
     </div>
     <style jsx>{`
@@ -102,18 +102,22 @@ const EyeSheet = (props) => (
         width: 100%;
         height: 50%;
 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+
         transition: visibility 0.5s ease;
         transition-delay: 1s;
       }
 
       .eyeContainer {
-        position: relative;
-        margin: 0px;
+        position: absolute;
       }
 
       #eye1 {
         top: 20%;
-        width: 5vw;
+        width: 10%;
         height: 5vw;
       }
 
@@ -250,7 +254,7 @@ export default class ProjectsCarousel extends React.Component {
     this.backgroundColors = ['#5454ff', '#ffba42', '#ff636b', '#00143b'];
 
     this.state = {
-      currentSlide: 3,
+      currentSlide: 2,
       backgroundColor: this.backgroundColors[0],
       lineWidthPercentages: Array(4).fill(0),
       subtextOpacities: Array(4).fill(0)

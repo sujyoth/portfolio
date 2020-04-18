@@ -5,7 +5,8 @@ class Eye extends React.Component {
     this.state = {
       eyePosX: 350,
       eyePosY: 300,
-      eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z" // initially closed
+      eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z", // initially closed
+      keepClosed: false
     }
 
     // for first open
@@ -21,14 +22,15 @@ class Eye extends React.Component {
 
     // for blinking
     setInterval(() => {
-      this.setState({
-        eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z" // close eyes
-      });
+      if (!this.state.keepClosed) {
+        this.setState({
+          eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z" // close eyes
+        });
 
-      setTimeout(() => this.setState({
-        eyeOutline: "M 0 300 Q 400 0 700 300 Q 250 400 0 300 Z" // open eyes
-      }), 600);
-
+        setTimeout(() => this.setState({
+          eyeOutline: "M 0 300 Q 400 0 700 300 Q 250 400 0 300 Z" // open eyes
+        }), 600);
+      }
     }, 7000 + Math.random() * 4000);
   }
 

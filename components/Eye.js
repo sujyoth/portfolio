@@ -4,16 +4,35 @@ class Eye extends React.Component {
 
     this.state = {
       eyePosX: 175,
-      eyePosY: 180
+      eyePosY: 180,
+      eyeOutline: "M 0 200 Q 200 180 350 200 Q 200 180 0 200 Z" // initially closed
     }
 
+    // for first open
+    setTimeout(() => {
+      this.setState({eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z"})
+    }, 1000 + Math.random() * 1500);
+
+    // for eye movement
     setInterval(() => {
       this.setState({
         eyePosX: this.getRandX(),
         eyePosY: this.getRandY()
       });
-    }, 1000 + Math.random() * 4000)
+    }, 1000 + Math.random() * 4000);
+
+    // for blinking
+    setInterval(() => {
+      this.setState({
+        eyeOutline: "M 0 200 Q 200 180 350 200 Q 200 180 0 200 Z" 
+      });
+
+      setTimeout(() => this.setState({
+        eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z"
+      }), 1300)
+    }, 7000 + Math.random() * 4000);
   }
+
   getRandX = () => {
     const minX = 140;
     const maxX = 205;
@@ -31,13 +50,7 @@ class Eye extends React.Component {
       <svg viewBox="0 0 350 250">
         <defs>
           <clipPath id="eye">
-            <path
-              d="
-             M 0 200 
-             Q 200 0 350 200 
-             Q 150 300 0 200 Z
-            "
-            />
+            <path d={this.state.eyeOutline} />
           </clipPath>
         </defs>
         <g id="eyeBall">

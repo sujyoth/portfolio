@@ -96,11 +96,14 @@ const EyeSheet = (props) => (
     </div>
     <style jsx>{`
       .eyeSheet {
-        position: relative;
+        position: absolute;
         visibility: ${props.isVisible ? 'visible' : 'hidden'};
         top: 25%;
         width: 100%;
         height: 50%;
+
+        transition: visibility 0.5s ease;
+        transition-delay: 1s;
       }
 
       .eyeContainer {

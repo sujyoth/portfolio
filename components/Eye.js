@@ -3,14 +3,14 @@ class Eye extends React.Component {
     super(props);
 
     this.state = {
-      eyePosX: 175,
-      eyePosY: 180,
-      eyeOutline: "M 0 200 Q 200 180 350 200 Q 200 180 0 200 Z" // initially closed
+      eyePosX: 350,
+      eyePosY: 300,
+      eyeOutline: "M 0 300 Q 400 50 700 300 Q 400 50 0 300 Z" // initially closed
     }
 
     // for first open
     setTimeout(() => this.setState({
-      eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z" // open eyes
+      eyeOutline: "M 0 300 Q 400 0 700 300 Q 250 400 0 300 Z" // open eyes
     }), 1000 + Math.random() * 1500);
 
     // for eye movement
@@ -22,47 +22,47 @@ class Eye extends React.Component {
     // for blinking
     setInterval(() => {
       this.setState({
-        eyeOutline: "M 0 200 Q 200 180 350 200 Q 200 180 0 200 Z" // close eyes
+        eyeOutline: "M 0 300 Q 400 50 700 300 Q 400 50 0 300 Z" // close eyes
       });
 
       setTimeout(() => this.setState({
-        eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z" // open eyes
-      }), 1300);
+        eyeOutline: "M 0 300 Q 400 0 700 300 Q 250 400 0 300 Z" // open eyes
+      }), 200);
 
     }, 7000 + Math.random() * 4000);
   }
 
   getRandX = () => {
-    const minX = 120;
-    const maxX = 225;
+    const minX = 200;
+    const maxX = 500;
     return (minX + Math.random() * (maxX - minX));
   }
 
   getRandY = () => {
-    const minY = 140;
-    const maxY = 205;
+    const minY = 250;
+    const maxY = 350;
     return (minY + Math.random() * (maxY - minY));
   }
 
   render() {
     return (
-      <svg viewBox="0 0 350 250">
+      <svg viewBox="0 0 700 400">
         <defs>
           <clipPath id="eye">
             <path d={this.state.eyeOutline} />
           </clipPath>
         </defs>
         <g id="eyeBall">
-          <rect width="3500" height="250" fill="#ffccf7" />
-          <circle cx={this.state.eyePosX} cy={this.state.eyePosY} r="75" fill="#5454ff" />
+          <rect width="700" height="400" fill="#ffccf7" />
+          <circle cx={this.state.eyePosX} cy={this.state.eyePosY} r="110" fill="#5454ff" />
         </g>
         <style jsx>{`
           svg path {
-            transition: 1s;
+            transition: 0.2s;
           }
 
           svg:hover path {
-            d: path("M0,200 Q200,180,350,200 Q200,180,0,200 Z");
+            d: path("M0,300 Q400,50,700,300 Q400,50,0,300 Z");
           }
 
           svg circle {

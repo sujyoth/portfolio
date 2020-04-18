@@ -118,7 +118,7 @@ const CarouselItem = (props) => {
           height: 8px;
           
           transition: width 1s ease;
-          transition-delay: 0.5s;
+          transition-delay: 0.3s;
           transform-origin: left;
         }
 
@@ -133,7 +133,7 @@ const CarouselItem = (props) => {
           opacity: ${props.subTextOpacity};
 
           transition: opacity 1s ease;
-          transition-delay: 0.7s;
+          transition-delay: 0.5s;
         }
 
         @media screen and (min-width: 40em) {
@@ -198,18 +198,26 @@ export default class ProjectsCarousel extends React.Component {
       // currentSlide is actually the previous slide now
       // index is actually the current slide now
       lineWidthPercentages[currentSlide] = 0;
-      lineWidthPercentages[index] = 100;
 
       subtextOpacities[currentSlide] = 0;
-      subtextOpacities[index]=1;
 
       this.setState({
-        currentSlide: index,
-        backgroundColor: this.backgroundColors[index],
         lineWidthPercentages: lineWidthPercentages,
         subtextOpacities: subtextOpacities
       });
       console.log("Animating slide: " + index);
+
+      setTimeout(() => {
+        lineWidthPercentages[index] = 100;
+        subtextOpacities[index]=1;
+
+        this.setState({
+          currentSlide: index,
+          backgroundColor: this.backgroundColors[index],
+          lineWidthPercentages: lineWidthPercentages,
+          subtextOpacities: subtextOpacities  
+        })
+      }, 1500);
     } else if (isInitial) {
       // This is only performed just after loading
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
@@ -229,14 +237,12 @@ export default class ProjectsCarousel extends React.Component {
     return (
       <div className="carouselContainer" onClick={(e) => e.stopPropagation()}>
         <Carousel
+          showArrows={false}
+          showIndicators={false}
           showStatus={false}
           showThumbs={false}
+          swipeable={false}
           infiniteLoop={true}
-          dynamicHeight={true}
-          emulateTouch={true}
-          useKeyboardArrows={true}
-          swipeScrollTolerance={2}
-          showIndicators={false}
           selectedItem={this.state.currentSlide}
           onChange={this.updateCurrentSlide} >
 

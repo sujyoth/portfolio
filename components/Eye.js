@@ -27,7 +27,7 @@ class Eye extends React.Component {
 
       setTimeout(() => this.setState({
         eyeOutline: "M 0 300 Q 400 0 700 300 Q 250 400 0 300 Z" // open eyes
-      }), 200);
+      }), 600);
 
     }, 7000 + Math.random() * 4000);
   }
@@ -58,7 +58,7 @@ class Eye extends React.Component {
         </g>
         <style jsx>{`
           svg path {
-            transition: 0.2s;
+            transition: 0.3s;
           }
 
           svg:hover path {

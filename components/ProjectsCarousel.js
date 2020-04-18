@@ -3,7 +3,7 @@ import Eye from "../components/Eye";
 
 
 const Indicator = (props) => (
-  <div 
+  <div
     className={props.isSelected ? 'isSelected' : 'indicator'}
     onClick={props.onClick}>
     <style jsx>{`
@@ -45,7 +45,7 @@ const Indicator = (props) => (
 
 const IndicatorBar = (props) => {
   const renderIndicator = (i) => (
-    <Indicator isSelected={props.selected === i ? true : false} onClick={() => props.clickHandler(i)}/>
+    <Indicator isSelected={props.selected === i ? true : false} onClick={() => props.clickHandler(i)} />
   )
 
   return (
@@ -82,9 +82,6 @@ const EyeSheet = (props) => (
     <div id="eye1" className="eyeContainer">
       <Eye />
     </div>
-    <div id="eye1" className="eyeContainer">
-      <Eye />
-    </div>
     <div id="eye2" className="eyeContainer">
       <Eye />
     </div>
@@ -94,13 +91,37 @@ const EyeSheet = (props) => (
     <div id="eye4" className="eyeContainer">
       <Eye />
     </div>
+    <div id="eye5" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye6" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye7" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye8" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye9" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye10" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye11" className="eyeContainer">
+      <Eye />
+    </div>
+    <div id="eye12" className="eyeContainer">
+      <Eye />
+    </div>
     <style jsx>{`
       .eyeSheet {
         position: absolute;
         visibility: ${props.isVisible ? 'visible' : 'hidden'};
-        top: 25%;
-        width: 100%;
-        height: 50%;
+        top: 15%;
+        width: 80%;
+        height: 40%;
 
         display: flex;
         flex-direction: row;
@@ -109,45 +130,84 @@ const EyeSheet = (props) => (
 
         transition: visibility 0.5s ease;
         transition-delay: 1s;
+        z-index: 1;
       }
 
-      .eyeContainer {
-        position: absolute;
-      }
+        .eyeContainer {
+          position: absolute;
+        }
 
-      #eye1 {
-        top: 20%;
-        width: 10%;
-        height: 5vw;
-      }
+        #eye1 {
+          top: 10%;
+          left: 20%;
+          width: 60%;
+        }
 
-      #eye2 {
-        top: 30%;
-        right: 60%;
-        width: 8vw;
-        height: 80vw;
-      }
+        #eye2 {
+          top: 10%;
+          left: 20%;
+          width: 10%;
+        }
 
-      #eye3 {
-        top: 10%;
-        left: 5%;
-        width: 10vw;
-        height: 10vw;
-      }
+        #eye3 {
+          top: 30%;
+          left: 14%;
+          width: 10%;
+        }
 
-      #eye4 {
-        top: 10px;
-        right: 5px;
-        width: 8vw;
-        height: 80vw;
-      }
+        #eye4 {
+          top: 20%;
+          left: 27%;
+          width: 14%;
+        }
 
-      #eye5 {
-        top: 10px;
-        right: 5px;
-        width: 8vw;
-        height: 80vw;
-      }
+        #eye5 {
+          top: 10%;
+          right: 20%;
+          width: 10%;
+        }
+
+        #eye6 {
+          top: 30%;
+          right: 14%;
+          width: 14%;
+        }
+
+        #eye7 {
+          top: 20%;
+          right: 27%;
+          width: 10%;
+        }
+
+        #eye8 {
+          top: 13%;
+          left: 42%;
+          width: 17%;
+        }
+
+        #eye9 {
+          bottom: 13%;
+          left: 72%;
+          width: 21%;
+        }
+
+        #eye10 {
+          bottom: 7%;
+          left: 12%;
+          width: 21%;
+        }
+
+        #eye11 {
+          bottom: 7%;
+          left: 60%;
+          width: 15%;
+        }
+
+        #eye12 {
+          bottom: 7%;
+          left: 40%;
+          width: 15%;
+        }
     `}</style>
   </div>
 )
@@ -159,8 +219,8 @@ const Sheets = (props) => (
       .sheetsContainer {
         position: fixed;
         top: 0;
-        left: 25%;
-        width: 50vw;
+        left: 10%;
+        width: 80vw;
         height: 100vh;
         z-index: 800;        
       }
@@ -302,13 +362,13 @@ export default class ProjectsCarousel extends React.Component {
 
       setTimeout(() => {
         lineWidthPercentages[index] = 100;
-        subtextOpacities[index]=1;
+        subtextOpacities[index] = 1;
 
         this.setState({
           currentSlide: index,
           backgroundColor: this.backgroundColors[index],
           lineWidthPercentages: lineWidthPercentages,
-          subtextOpacities: subtextOpacities  
+          subtextOpacities: subtextOpacities
         })
       }, 1500);
     } else if (isInitial) {
@@ -339,38 +399,38 @@ export default class ProjectsCarousel extends React.Component {
           selectedItem={this.state.currentSlide}
           onChange={this.updateCurrentSlide} >
 
-          <CarouselItem 
-            mainText="vote" 
+          <CarouselItem
+            mainText="vote"
             subText="Opinion-based question generator"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[0]}
             subTextOpacity={this.state.subtextOpacities[0]} />
 
-          <CarouselItem 
-            mainText="BookwoRM" 
-            subText="Local book-sharing app" 
-            backgroundColor={this.state.backgroundColor} 
+          <CarouselItem
+            mainText="BookwoRM"
+            subText="Local book-sharing app"
+            backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[1]}
             subTextOpacity={this.state.subtextOpacities[1]} />
 
-          <CarouselItem  
-            mainText="Lyricvis" 
-            subText="Song suggestion and lyrics fetching app" 
-            backgroundColor={this.state.backgroundColor} 
+          <CarouselItem
+            mainText="Lyricvis"
+            subText="Song suggestion and lyrics fetching app"
+            backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[2]}
             subTextOpacity={this.state.subtextOpacities[2]} />
 
-          <CarouselItem 
-            mainText="roVer" 
-            subText="Surveillance Car based on Raspberry Pi" 
-            backgroundColor={this.state.backgroundColor} 
+          <CarouselItem
+            mainText="roVer"
+            subText="Surveillance Car based on Raspberry Pi"
+            backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[3]}
             subTextOpacity={this.state.subtextOpacities[3]} />
 
         </Carousel>
 
-        <IndicatorBar 
-          selected={this.state.currentSlide} 
+        <IndicatorBar
+          selected={this.state.currentSlide}
           clickHandler={this.updateCurrentSlide} />
 
         <Sheets
@@ -378,7 +438,7 @@ export default class ProjectsCarousel extends React.Component {
 
         <style jsx>{`
           .carouselContainer {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
 

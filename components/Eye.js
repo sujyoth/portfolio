@@ -9,33 +9,32 @@ class Eye extends React.Component {
     }
 
     // for first open
-    setTimeout(() => {
-      this.setState({eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z"})
-    }, 1000 + Math.random() * 1500);
+    setTimeout(() => this.setState({
+      eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z" // open eyes
+    }), 1000 + Math.random() * 1500);
 
     // for eye movement
-    setInterval(() => {
-      this.setState({
-        eyePosX: this.getRandX(),
-        eyePosY: this.getRandY()
-      });
-    }, 1000 + Math.random() * 4000);
+    setInterval(() => this.setState({
+      eyePosX: this.getRandX(),
+      eyePosY: this.getRandY()
+    }), 3000 + Math.random() * 4000);
 
     // for blinking
     setInterval(() => {
       this.setState({
-        eyeOutline: "M 0 200 Q 200 180 350 200 Q 200 180 0 200 Z" 
+        eyeOutline: "M 0 200 Q 200 180 350 200 Q 200 180 0 200 Z" // close eyes
       });
 
       setTimeout(() => this.setState({
-        eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z"
-      }), 1300)
+        eyeOutline: "M 0 200 Q 200 0 350 200 Q 150 300 0 200 Z" // open eyes
+      }), 1300);
+
     }, 7000 + Math.random() * 4000);
   }
 
   getRandX = () => {
-    const minX = 140;
-    const maxX = 205;
+    const minX = 120;
+    const maxX = 225;
     return (minX + Math.random() * (maxX - minX));
   }
 

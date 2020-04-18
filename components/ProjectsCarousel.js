@@ -42,12 +42,16 @@ const Indicator = (props) => (
 )
 
 const IndicatorBar = (props) => {
+  const renderIndicator = (i) => (
+    <Indicator isSelected={props.selected === i ? true : false} onClick={() => props.clickHandler(i)}/>
+  )
+
   return (
     <div className="indicatorContainer">
-      <Indicator isSelected={props.selected === 0 ? true : false} onClick={() => props.clickHandler(0)}/>
-      <Indicator isSelected={props.selected === 1 ? true : false} onClick={() => props.clickHandler(1)}/>
-      <Indicator isSelected={props.selected === 2 ? true : false} onClick={() => props.clickHandler(2)}/>
-      <Indicator isSelected={props.selected === 3 ? true : false} onClick={() => props.clickHandler(3)}/>
+      {renderIndicator(0)}
+      {renderIndicator(1)}
+      {renderIndicator(2)}
+      {renderIndicator(3)}
       <style jsx>{`
         .indicatorContainer {
           position: absolute;
@@ -234,8 +238,7 @@ export default class ProjectsCarousel extends React.Component {
           swipeScrollTolerance={2}
           showIndicators={false}
           selectedItem={this.state.currentSlide}
-          onChange={this.updateCurrentSlide}
-        >
+          onChange={this.updateCurrentSlide} >
 
           <CarouselItem 
             mainText="vote" 

@@ -200,7 +200,7 @@ export default class ProjectsCarousel extends React.Component {
       currentSlide: 3,
       backgroundColor: this.backgroundColors[0],
       lineWidthPercentages: Array(4).fill(0),
-      subtextOpacities: Array(4).fill(0),
+      subTextOpacities: Array(4).fill(0),
       sheetVisibilities: Array(4).fill(false)
     };
 
@@ -227,24 +227,25 @@ export default class ProjectsCarousel extends React.Component {
 
   // this function is called when the slide is to be changed
   updateCurrentSlide = (nextSlide, isInitial) => {
-    console.log("gxg", nextSlide);
     const { currentSlide } = this.state;
 
     if (currentSlide !== nextSlide) {
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
-      const subtextOpacities = this.state.subtextOpacities.slice();
+      const subTextOpacities = this.state.subTextOpacities.slice();
       const sheetVisibilities = this.state.sheetVisibilities.slice();
 
       // currentSlide is the index of the currently visible slide
       // nextSlide is the index of the slide to which the focus will be moved
 
       // this part is for animating away the currentSlide
+      console.log("Animating-Away slide: " + currentSlide);
+
       lineWidthPercentages[currentSlide] = 0;
-      subtextOpacities[currentSlide] = 0;
+      subTextOpacities[currentSlide] = 0;
 
       this.setState({
         lineWidthPercentages: lineWidthPercentages,
-        subtextOpacities: subtextOpacities,
+        subTextOpacities: subTextOpacities,
         sheetVisibilities: sheetVisibilities
       });
 
@@ -255,39 +256,47 @@ export default class ProjectsCarousel extends React.Component {
         this.setState({
           sheetVisibilities: sheetVisibilities
         });
-  
-      }, 1000)
-
+      }, 1000);
 
       // this part is for animating in the nextSlide
-      console.log("Animating slide: " + nextSlide);
 
       setTimeout(() => {
-        lineWidthPercentages[nextSlide] = 100;
-        subtextOpacities[nextSlide] = 1;
+        console.log("Animating-In slide: " + nextSlide);
+
         sheetVisibilities[nextSlide] = true;
 
         this.setState({
           currentSlide: nextSlide,
           backgroundColor: this.backgroundColors[nextSlide],
-          lineWidthPercentages: lineWidthPercentages,
-          subtextOpacities: subtextOpacities,
           sheetVisibilities: sheetVisibilities
-        })
+        });
       }, 1500);
-    } else if (isInitial) {
+
+      setTimeout(() => {
+        lineWidthPercentages[nextSlide] = 100;
+        subTextOpacities[nextSlide] = 1;
+
+        this.setState({
+          lineWidthPercentages: lineWidthPercentages,
+          subTextOpacities: subTextOpacities,
+        });
+      }, 2000);
+
+
+    } else if (isInitial === true) {
+      console.log("Animating-In initial slide: " + nextSlide);
       // This is only performed just after loading (for the scroll animation after splash screen)
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
-      const subtextOpacities = this.state.subtextOpacities.slice();
+      const subTextOpacities = this.state.subTextOpacities.slice();
       const sheetVisibilities = this.state.sheetVisibilities.slice();
 
       lineWidthPercentages[nextSlide] = 100;
-      subtextOpacities[nextSlide] = 1;
+      subTextOpacities[nextSlide] = 1;
       sheetVisibilities[nextSlide] = true;
 
       this.setState({
         lineWidthPercentages: lineWidthPercentages,
-        subtextOpacities: subtextOpacities,
+        subTextOpacities: subTextOpacities,
         sheetVisibilities: sheetVisibilities
       });
     }
@@ -311,21 +320,21 @@ export default class ProjectsCarousel extends React.Component {
             subText="Opinion-based question generator"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[0]}
-            subTextOpacity={this.state.subtextOpacities[0]} />
+            subTextOpacity={this.state.subTextOpacities[0]} />
 
           <CarouselItem
             mainText="BookwoRM"
             subText="Local book-sharing app"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[1]}
-            subTextOpacity={this.state.subtextOpacities[1]} />
+            subTextOpacity={this.state.subTextOpacities[1]} />
 
           <CarouselItem
             mainText="Lyricvis"
             subText="Song suggestion and lyrics fetching app"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[2]}
-            subTextOpacity={this.state.subtextOpacities[2]} />
+            subTextOpacity={this.state.subTextOpacities[2]} />
 
           <CarouselItem
             mainText="roVer"
@@ -333,7 +342,7 @@ export default class ProjectsCarousel extends React.Component {
             sheet={<Eye keepClosed={!this.state.sheetVisibilities[3]}/>}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[3]}
-            subTextOpacity={this.state.subtextOpacities[3]}
+            subTextOpacity={this.state.subTextOpacities[3]}
             isSelected={this.state.currentSlide === 3 ? true : false} />
 
         </Carousel>

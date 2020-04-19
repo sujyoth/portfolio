@@ -16,7 +16,7 @@ class Eye extends React.Component {
     // for first open
     this.firstOpener = setTimeout(() => this.setState({
       eyeOutline: this.openOutline // open eyes
-    }), 1000 + Math.random() * 1500);
+    }), 400);
 
     // for eye movement
     this.mover = setInterval(() => this.setState({

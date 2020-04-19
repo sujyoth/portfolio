@@ -48,7 +48,7 @@ class Eye extends React.Component {
 
   render() {
     return (
-      <svg viewBox="0 0 700 400">
+      <svg viewBox="0 140 700 230">
         <defs>
           <clipPath id="eye">
             <path d={this.state.eyeOutline} />

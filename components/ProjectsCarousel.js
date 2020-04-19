@@ -80,17 +80,19 @@ const IndicatorBar = (props) => {
 const CarouselItem = (props) => {
   return (
     <div className="slideContainer">
-      <div>
+      <div className="sheetContainer">
+        <div className="sheet">
+          {props.sheet}
+        </div>
+      </div>
+      <div className="contentContainer">
         <div className="mainContainer">
           <div className="mainText">{props.mainText}</div>
           <div className="mainTextLine" />
         </div>
         <div className="subText">{props.subText}</div>
-        <div className="sheetContainer">
-            {props.sheet}
-          </div>
-
       </div>
+
       <style jsx>{`
         .slideContainer {
           display: flex;
@@ -98,6 +100,7 @@ const CarouselItem = (props) => {
           align-items: center;
           justify-content: center;
 
+          position: relative
           width: 100%;
           height: 100vh;
           background: ${props.backgroundColor};
@@ -105,18 +108,34 @@ const CarouselItem = (props) => {
           transition: background-color 0.3s ease;
         }
 
+        .contentContainer {
+          position: relative;
+          display: block;
+        }
+
         .mainContainer {
+          position: relative;
           padding-top: 14px;
           margin-bottom: 20px;
           display: inline-block;
+          z-index: 400;
+        }
+
+        .sheet {
+          width: 80vw;
         }
 
         .sheetContainer {
-          position: absolute;
-          top: 0;
-          left: 10%;
-          width: 80vw;
-          height: 100vh;
+          width: 60vw;
+          height: 60vw;
+
+          position: fixed;
+          z-index: 70;
+          margin: auto;
+
+          display:flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .mainText {
@@ -143,6 +162,10 @@ const CarouselItem = (props) => {
           color: #fff;
           text-transform: uppercase;
           display: none;
+          
+          position: relative;
+          z-index: 400;
+
 
           opacity: ${props.subTextOpacity};
 

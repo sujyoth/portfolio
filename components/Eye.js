@@ -8,20 +8,22 @@ class Eye extends React.Component {
       eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z", // initially closed
       keepClosed: false
     }
+  }
 
+  componentDidMount() {
     // for first open
-    setTimeout(() => this.setState({
+    this.firstOpener = setTimeout(() => this.setState({
       eyeOutline: "M 0 300 Q 400 0 700 300 Q 250 400 0 300 Z" // open eyes
     }), 1000 + Math.random() * 1500);
 
     // for eye movement
-    setInterval(() => this.setState({
+    this.mover = setInterval(() => this.setState({
       eyePosX: this.getRandX(),
       eyePosY: this.getRandY()
     }), 3000 + Math.random() * 4000);
 
     // for blinking
-    setInterval(() => {
+    this.blinker = setInterval(() => {
       if (!this.state.keepClosed) {
         this.setState({
           eyeOutline: "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z" // close eyes
@@ -32,6 +34,12 @@ class Eye extends React.Component {
         }), 600);
       }
     }, 7000 + Math.random() * 4000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.firstOpener);
+    clearInterval(this.mover);
+    clearInterval(this.blinker);
   }
 
   getRandX = () => {

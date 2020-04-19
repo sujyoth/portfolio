@@ -1,7 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
 import Eye from "../components/Eye";
 
-
 const Indicator = (props) => (
   <div
     className={props.isSelected ? 'isSelected' : 'indicator'}
@@ -198,13 +197,14 @@ export default class ProjectsCarousel extends React.Component {
     this.backgroundColors = ['#5454ff', '#ffba42', '#ff636b', '#00143b'];
 
     this.state = {
-      currentSlide: 2,
+      currentSlide: 3,
       backgroundColor: this.backgroundColors[0],
       lineWidthPercentages: Array(4).fill(0),
       subtextOpacities: Array(4).fill(0),
       sheetVisibilities: Array(4).fill(false)
     };
 
+    // this if for the scroll animation after splash screen fades out
     setTimeout(() => {
       this.setState({ currentSlide: 0 });
       this.updateCurrentSlide(0, true);
@@ -225,17 +225,20 @@ export default class ProjectsCarousel extends React.Component {
     }));
   };
 
-  updateCurrentSlide = (index, isInitial) => {
-    console.log("gxg", index);
+  // this function is called when the slide is to be changed
+  updateCurrentSlide = (nextSlide, isInitial) => {
+    console.log("gxg", nextSlide);
     const { currentSlide } = this.state;
 
-    if (currentSlide !== index) {
+    if (currentSlide !== nextSlide) {
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
       const subtextOpacities = this.state.subtextOpacities.slice();
-      const sheetVisibilities = this.state.sheetVisibilities.slice()
+      const sheetVisibilities = this.state.sheetVisibilities.slice();
 
-      // currentSlide is actually the previous slide now
-      // index is actually the current slide now
+      // currentSlide is the index of the currently visible slide
+      // nextSlide is the index of the slide to which the focus will be moved
+
+      // this part is for animating away the currentSlide
       lineWidthPercentages[currentSlide] = 0;
       subtextOpacities[currentSlide] = 0;
 
@@ -245,6 +248,7 @@ export default class ProjectsCarousel extends React.Component {
         sheetVisibilities: sheetVisibilities
       });
 
+      // The animating away of the current sheet is delayed for visual purposes
       setTimeout(() => {
         sheetVisibilities[currentSlide] = false;
 
@@ -255,30 +259,31 @@ export default class ProjectsCarousel extends React.Component {
       }, 1000)
 
 
-      console.log("Animating slide: " + index);
+      // this part is for animating in the nextSlide
+      console.log("Animating slide: " + nextSlide);
 
       setTimeout(() => {
-        lineWidthPercentages[index] = 100;
-        subtextOpacities[index] = 1;
-        sheetVisibilities[index] = true;
+        lineWidthPercentages[nextSlide] = 100;
+        subtextOpacities[nextSlide] = 1;
+        sheetVisibilities[nextSlide] = true;
 
         this.setState({
-          currentSlide: index,
-          backgroundColor: this.backgroundColors[index],
+          currentSlide: nextSlide,
+          backgroundColor: this.backgroundColors[nextSlide],
           lineWidthPercentages: lineWidthPercentages,
           subtextOpacities: subtextOpacities,
           sheetVisibilities: sheetVisibilities
         })
       }, 1500);
     } else if (isInitial) {
-      // This is only performed just after loading
+      // This is only performed just after loading (for the scroll animation after splash screen)
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
       const subtextOpacities = this.state.subtextOpacities.slice();
       const sheetVisibilities = this.state.sheetVisibilities.slice();
 
-      lineWidthPercentages[index] = 100;
-      subtextOpacities[index] = 1;
-      sheetVisibilities[index] = true;
+      lineWidthPercentages[nextSlide] = 100;
+      subtextOpacities[nextSlide] = 1;
+      sheetVisibilities[nextSlide] = true;
 
       this.setState({
         lineWidthPercentages: lineWidthPercentages,

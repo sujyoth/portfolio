@@ -1,5 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
 import Eye from "../components/Eye";
+import Link from "next/link"
 
 const Indicator = (props) => (
   <div
@@ -79,18 +80,23 @@ const IndicatorBar = (props) => {
 const CarouselItem = (props) => {
   return (
     <div className="slideContainer">
-      {props.isSelected && <div className="sheetContainer">
-        <div className="sheet">
-          {props.sheet}
+      {props.isSelected && <Link href="/about">
+        <div className="sheetContainer">
+          <div className="sheet">
+            {props.sheet}
+          </div>
         </div>
-      </div>}
-      <div className="contentContainer">
-        <div className="mainContainer">
-          <div className="mainText">{props.mainText}</div>
-          <div className="mainTextLine" />
+      </Link>}
+      
+      <Link href="/about">
+        <div className="contentContainer">
+          <div className="mainContainer">
+            <div className="mainText">{props.mainText}</div>
+            <div className="mainTextLine" />
+          </div>
+          <div className="subText">{props.subText}</div>
         </div>
-        <div className="subText">{props.subText}</div>
-      </div>
+      </Link>
 
       <style jsx>{`
         .slideContainer {
@@ -339,7 +345,7 @@ export default class ProjectsCarousel extends React.Component {
           <CarouselItem
             mainText="roVer"
             subText="Surveillance Car based on Raspberry Pi"
-            sheet={<Eye keepClosed={!this.state.sheetVisibilities[3]}/>}
+            sheet={<Eye keepClosed={!this.state.sheetVisibilities[3]} />}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[3]}
             subTextOpacity={this.state.subTextOpacities[3]}

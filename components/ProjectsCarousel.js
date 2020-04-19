@@ -201,7 +201,8 @@ export default class ProjectsCarousel extends React.Component {
       currentSlide: 2,
       backgroundColor: this.backgroundColors[0],
       lineWidthPercentages: Array(4).fill(0),
-      subtextOpacities: Array(4).fill(0)
+      subtextOpacities: Array(4).fill(0),
+      sheetVisibilities: Array(4).fill(false)
     };
 
     setTimeout(() => {
@@ -231,41 +232,58 @@ export default class ProjectsCarousel extends React.Component {
     if (currentSlide !== index) {
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
       const subtextOpacities = this.state.subtextOpacities.slice();
+      const sheetVisibilities = this.state.sheetVisibilities.slice()
 
       // currentSlide is actually the previous slide now
       // index is actually the current slide now
       lineWidthPercentages[currentSlide] = 0;
-
       subtextOpacities[currentSlide] = 0;
 
       this.setState({
         lineWidthPercentages: lineWidthPercentages,
-        subtextOpacities: subtextOpacities
+        subtextOpacities: subtextOpacities,
+        sheetVisibilities: sheetVisibilities
       });
+
+      setTimeout(() => {
+        sheetVisibilities[currentSlide] = false;
+
+        this.setState({
+          sheetVisibilities: sheetVisibilities
+        });
+  
+      }, 1000)
+
+
       console.log("Animating slide: " + index);
 
       setTimeout(() => {
         lineWidthPercentages[index] = 100;
         subtextOpacities[index] = 1;
+        sheetVisibilities[index] = true;
 
         this.setState({
           currentSlide: index,
           backgroundColor: this.backgroundColors[index],
           lineWidthPercentages: lineWidthPercentages,
-          subtextOpacities: subtextOpacities
+          subtextOpacities: subtextOpacities,
+          sheetVisibilities: sheetVisibilities
         })
       }, 1500);
     } else if (isInitial) {
       // This is only performed just after loading
       const lineWidthPercentages = this.state.lineWidthPercentages.slice();
       const subtextOpacities = this.state.subtextOpacities.slice();
+      const sheetVisibilities = this.state.sheetVisibilities.slice();
 
       lineWidthPercentages[index] = 100;
       subtextOpacities[index] = 1;
+      sheetVisibilities[index] = true;
 
       this.setState({
         lineWidthPercentages: lineWidthPercentages,
-        subtextOpacities: subtextOpacities
+        subtextOpacities: subtextOpacities,
+        sheetVisibilities: sheetVisibilities
       });
     }
   };
@@ -307,7 +325,7 @@ export default class ProjectsCarousel extends React.Component {
           <CarouselItem
             mainText="roVer"
             subText="Surveillance Car based on Raspberry Pi"
-            sheet={<Eye />}
+            sheet={<Eye keepClosed={!this.state.sheetVisibilities[3]}/>}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[3]}
             subTextOpacity={this.state.subtextOpacities[3]}

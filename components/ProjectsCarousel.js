@@ -80,11 +80,11 @@ const IndicatorBar = (props) => {
 const CarouselItem = (props) => {
   return (
     <div className="slideContainer">
-      <div className="sheetContainer">
+      {props.isSelected && <div className="sheetContainer">
         <div className="sheet">
           {props.sheet}
         </div>
-      </div>
+      </div>}
       <div className="contentContainer">
         <div className="mainContainer">
           <div className="mainText">{props.mainText}</div>
@@ -310,7 +310,8 @@ export default class ProjectsCarousel extends React.Component {
             sheet={<Eye />}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[3]}
-            subTextOpacity={this.state.subtextOpacities[3]} />
+            subTextOpacity={this.state.subtextOpacities[3]}
+            isSelected={this.state.currentSlide === 3 ? true : false} />
 
         </Carousel>
 

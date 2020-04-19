@@ -80,14 +80,13 @@ const IndicatorBar = (props) => {
 const CarouselItem = (props) => {
   return (
     <div className="slideContainer">
-      {props.isSelected && <Link href="/about">
-        <div className="sheetContainer">
+      {props.isSelected && <div className="sheetContainer">
+        <Link href="/about">
           <div className="sheet">
             {props.sheet}
           </div>
-        </div>
-      </Link>}
-      
+        </Link>
+      </div>}
       <Link href="/about">
         <div className="contentContainer">
           <div className="mainContainer">
@@ -114,6 +113,7 @@ const CarouselItem = (props) => {
         }
 
         .contentContainer {
+          cursor: pointer;
           position: relative;
           display: block;
         }
@@ -127,6 +127,7 @@ const CarouselItem = (props) => {
         }
 
         .sheet {
+          cursor: pointer;
           width: 80vw;
         }
 

@@ -18,13 +18,9 @@ const Indicator = (props) => (
           transition: transform 250ms ease 0s;
         }
 
-        .indicator:hover {
-          transform: scale(2.25);
-        }
-
-        .selected {
-          transform: scale(2.25);
+        .indicator:hover .inner, .selected .inner{
           transition: transform 250ms ease 0s;
+          transform: scale(2.25);
         }
 
         .inner {
@@ -54,7 +50,7 @@ const IndicatorBar = (props) => {
       <style jsx>{`
         .indicatorContainer {
           position: absolute;
-          bottom: 22px;
+          bottom: 10px;
 
           width: 100%;
           height: 80px;

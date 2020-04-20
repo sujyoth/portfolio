@@ -4,9 +4,11 @@ const Vote = (props) => {
   return (
     <Layout isDark={true} >
       <div className="article">
-        <div className="mainTextContainer">
-          <div className="mainText">vote</div>
-          <span className="mainTextUnderline"></span>
+        <div className="header">
+          <div className="main">
+            <div className="mainText">vote</div>
+            <div className="mainUnderline"></div>
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -20,9 +22,8 @@ const Vote = (props) => {
         background: #fff;
       }
 
-      .mainTextContainer {
+      .header {
         margin-bottom: 100px;
-        padding-top: 14px;
 
         display: flex;
         flex-direction: column;
@@ -32,6 +33,14 @@ const Vote = (props) => {
         overflow: hidden;
       }
 
+      .main {
+        display: flex;
+        flex-direction: column; 
+        padding-top: 14px;
+
+        height: 64px;
+      }
+
       .mainText {
         font-family: Anisette;
         font-size: 40px;
@@ -39,7 +48,7 @@ const Vote = (props) => {
         color: #5454ff;
       }
 
-      .mainTextUnderline {
+      .mainUnderline {
         height: 8px;
         width: 100%;
 
@@ -47,17 +56,21 @@ const Vote = (props) => {
       }
 
       @media screen and (min-width: 40em) {
+        .main {
+          height: 140px;
+        }
+
         .mainText {
           font-size: 100px;
         }
 
-        .mainTextUnderline {
+        .mainUnderline {
           height: 18px;
         }
       }
       `}</style>
     </Layout>
   );
-} 
+}
 
 export default Vote;

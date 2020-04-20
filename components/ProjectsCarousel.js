@@ -3,7 +3,7 @@ import Eye from "../components/Eye";
 import Link from "next/link"
 
 const Indicator = (props) => (
-  <div className={"indicator "  + (props.isSelected && 'selected')} onClick={props.onClick}>
+  <div className={"indicator " + (props.isSelected && 'selected')} onClick={props.onClick}>
     <div className='inner' />
     <style jsx>{`
         .indicator {
@@ -75,22 +75,30 @@ const CarouselItem = (props) => {
     <div className="slideContainer">
       {props.isSelected && <div className="sheetContainer">
         <Link href="/about">
-          <div className="sheet">
-            {props.sheet}
-          </div>
+          <a>
+            <div className="sheet">
+              {props.sheet}
+            </div>
+          </a>
         </Link>
       </div>}
       <Link href="/about">
-        <div className="contentContainer">
-          <div className="mainContainer">
-            <div className="mainText">{props.mainText}</div>
-            <div className="mainTextLine" />
+        <a>
+          <div className="contentContainer">
+            <div className="mainContainer">
+              <div className="mainText">{props.mainText}</div>
+              <div className="mainTextLine" />
+            </div>
+            <div className="subText">{props.subText}</div>
           </div>
-          <div className="subText">{props.subText}</div>
-        </div>
+        </a>
       </Link>
 
       <style jsx>{`
+        a {
+          text-decoration: none;
+        }
+        
         .slideContainer {
           display: flex;
           flex-direction: column;
@@ -107,6 +115,7 @@ const CarouselItem = (props) => {
 
         .contentContainer {
           cursor: pointer;
+
           position: relative;
           display: block;
         }
@@ -160,11 +169,11 @@ const CarouselItem = (props) => {
           letter-spacing: 2px;
           color: #fff;
           text-transform: uppercase;
+
           display: none;
           
           position: relative;
           z-index: 400;
-
 
           opacity: ${props.subTextOpacity};
 

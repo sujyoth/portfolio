@@ -3,42 +3,39 @@ import Eye from "../components/Eye";
 import Link from "next/link"
 
 const Indicator = (props) => (
-  <div
-    className={props.isSelected ? 'isSelected' : 'indicator'}
-    onClick={props.onClick}>
+  <div className={"indicator "  + (props.isSelected && 'selected')} onClick={props.onClick}>
+    <div className='inner' />
     <style jsx>{`
-      .indicator {
-        background: #fff;
-        border-radius: 50%;
+        .indicator {
+          cursor: pointer;
+          padding: 30px 10px;
+          margin: 0px 5px;
 
-        width: 8px;
-        height: 8px;
+          width: 8px;
+          height: 8px;
 
-        margin-left: 10px;
-        margin-right: 10px;
+          will-change: transform;
+          transition: transform 250ms ease 0s;
+        }
 
-        transition: transform 250ms ease 0s;
-        z-index: 2500;
-      }
+        .indicator:hover {
+          transform: scale(2.25);
+        }
 
-      .indicator:hover {
-        transform: scale(2.25);
-      }
+        .selected {
+          transform: scale(2.25);
+          transition: transform 250ms ease 0s;
+        }
 
-      .isSelected {
-        background: #fff;
-        border-radius: 50%;
+        .inner {
+          background: #fff;
+          border-radius: 50%;
 
-        width: 17px;
-        height: 17px;
+          height:100%;
+          width: 100%;
 
-        margin-left: 10px;
-        margin-right: 10px;
-
-        transition:  none;
-        z-index: 2500;
-
-      }
+          z-index: 2500;
+        }
     `}</style>
   </div>
 )
@@ -57,7 +54,7 @@ const IndicatorBar = (props) => {
       <style jsx>{`
         .indicatorContainer {
           position: absolute;
-          bottom: 10px;
+          bottom: 22px;
 
           width: 100%;
           height: 80px;

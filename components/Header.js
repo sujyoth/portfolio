@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import UnderlineText from './UnderlineText';
 
-const Header = () => (
+const Header = (props) => (
   <div className="header">
     <div className="nav">
       <Link href="/">
@@ -73,7 +72,9 @@ const Header = () => (
         .nameShort {
           display: none;
         }
+      }
 
+      @media screen and (min-width: 64em) {
         .nav {
           padding-left: 90px;
           padding-right: 90px;
@@ -84,7 +85,7 @@ const Header = () => (
         font-family: Brandon;
         font-size: 11px;
         position: relative;
-        color: #fff;
+        color: ${props.isDark ? '#000' : '#fff'};
         text-decoration: none;
         letter-spacing: 2px;
 
@@ -99,7 +100,7 @@ const Header = () => (
         height: 1px;
         bottom: 17px;
         left: 0;
-        background-color: #fff;
+        background-color: ${props.isDark ? '#000' : '#fff'};
         visibility: hidden;
         transform-origin: left;
         transform: scaleX(0);

@@ -74,7 +74,7 @@ const CarouselItem = (props) => {
   return (
     <div className="slideContainer">
       {props.isSelected && <div className="sheetContainer">
-        <Link href="/about">
+        <Link href={props.href}>
           <a>
             <div className="sheet">
               {props.sheet}
@@ -82,7 +82,7 @@ const CarouselItem = (props) => {
           </a>
         </Link>
       </div>}
-      <Link href="/about">
+      <Link href={props.href}>
         <a>
           <div className="contentContainer">
             <div className="mainContainer">
@@ -327,6 +327,7 @@ export default class ProjectsCarousel extends React.Component {
           <CarouselItem
             mainText="vote"
             subText="Opinion-based question generator"
+            href="/projects/vote"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[0]}
             subTextOpacity={this.state.subTextOpacities[0]} />
@@ -334,6 +335,7 @@ export default class ProjectsCarousel extends React.Component {
           <CarouselItem
             mainText="BookwoRM"
             subText="Local book-sharing app"
+            href="/projects/bookworm"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[1]}
             subTextOpacity={this.state.subTextOpacities[1]} />
@@ -341,6 +343,7 @@ export default class ProjectsCarousel extends React.Component {
           <CarouselItem
             mainText="Lyricvis"
             subText="Song suggestion and lyrics fetching app"
+            href="/projects/lyricvis"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[2]}
             subTextOpacity={this.state.subTextOpacities[2]} />
@@ -348,6 +351,7 @@ export default class ProjectsCarousel extends React.Component {
           <CarouselItem
             mainText="roVer"
             subText="Surveillance Car based on Raspberry Pi"
+            href="/projects/rover"
             sheet={<Eye keepClosed={!this.state.sheetVisibilities[3]} />}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[3]}

@@ -1,5 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
 import Eye from "../components/Eye";
+import Radar from "../components/Radar";
 import Link from "next/link"
 
 const Indicator = (props) => (
@@ -130,7 +131,7 @@ const CarouselItem = (props) => {
 
         .sheet {
           cursor: pointer;
-          width: 80vw;
+          width: 40vw;
         }
 
         .sheetContainer {
@@ -330,15 +331,18 @@ export default class ProjectsCarousel extends React.Component {
             href="/projects/vote"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[0]}
-            subTextOpacity={this.state.subTextOpacities[0]} />
+            subTextOpacity={this.state.subTextOpacities[0]}
+            isSelected={this.state.currentSlide === 0 ? true : false} />
 
           <CarouselItem
             mainText="BookwoRM"
             subText="Local book-sharing app"
             href="/projects/bookworm"
+            sheet={<Radar />}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[1]}
-            subTextOpacity={this.state.subTextOpacities[1]} />
+            subTextOpacity={this.state.subTextOpacities[1]}
+            isSelected={this.state.currentSlide === 1 ? true : false} />
 
           <CarouselItem
             mainText="Lyricvis"
@@ -346,7 +350,8 @@ export default class ProjectsCarousel extends React.Component {
             href="/projects/lyricvis"
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[2]}
-            subTextOpacity={this.state.subTextOpacities[2]} />
+            subTextOpacity={this.state.subTextOpacities[2]}
+            isSelected={this.state.currentSlide === 2 ? true : false} />
 
           <CarouselItem
             mainText="roVer"

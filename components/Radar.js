@@ -9,7 +9,7 @@ class Radar extends React.Component {
 
   componentWillMount() {
     this.reveal = setTimeout(() => this.setState({
-      radarSize: '37vw' 
+      radarSize: '38vw' 
     }), 400);
 
     this.rotate = setInterval(() => this.setState({

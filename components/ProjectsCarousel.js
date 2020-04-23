@@ -338,7 +338,7 @@ export default class ProjectsCarousel extends React.Component {
             mainText="BookwoRM"
             subText="Local book-sharing app"
             href="/projects/bookworm"
-            sheet={<Radar />}
+            sheet={<Radar hide={!this.state.sheetVisibilities[1]} />}
             backgroundColor={this.state.backgroundColor}
             lineWidthPercentage={this.state.lineWidthPercentages[1]}
             subTextOpacity={this.state.subTextOpacities[1]}

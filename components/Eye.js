@@ -39,39 +39,39 @@ class Eye extends React.Component {
   }
 
 
-componentWillUnmount() {
-  clearTimeout(this.firstOpener);
-  clearInterval(this.mover);
-  clearInterval(this.blinker);
+  componentWillUnmount() {
+    clearTimeout(this.firstOpener);
+    clearInterval(this.mover);
+    clearInterval(this.blinker);
 
-  this.setState({ eyeOutline: this.closedOutline }); // close eyes
-}
+    this.setState({ eyeOutline: this.closedOutline }); // close eyes
+  }
 
-getRandX = () => {
-  const minX = 200;
-  const maxX = 500;
-  return (minX + Math.random() * (maxX - minX));
-}
+  getRandX = () => {
+    const minX = 200;
+    const maxX = 500;
+    return (minX + Math.random() * (maxX - minX));
+  }
 
-getRandY = () => {
-  const minY = 250;
-  const maxY = 350;
-  return (minY + Math.random() * (maxY - minY));
-}
+  getRandY = () => {
+    const minY = 250;
+    const maxY = 350;
+    return (minY + Math.random() * (maxY - minY));
+  }
 
-render() {
-  return (
-    <svg viewBox="0 140 700 230">
-      <defs>
-        <clipPath id="eye">
-          <path d={this.props.keepClosed ? this.closedOutline : this.state.eyeOutline} />
-        </clipPath>
-      </defs>
-      <g id="eyeBall">
-        <rect width="700" height="400" fill="#ffccf7" />
-        <circle cx={this.state.eyePosX} cy={this.state.eyePosY} r="110" fill="#5454ff" />
-      </g>
-      <style jsx>{`
+  render() {
+    return (
+      <svg viewBox="0 140 700 230">
+        <defs>
+          <clipPath id="eye">
+            <path d={this.props.keepClosed ? this.closedOutline : this.state.eyeOutline} />
+          </clipPath>
+        </defs>
+        <g id="eyeBall">
+          <rect width="700" height="400" fill="#ffccf7" />
+          <circle cx={this.state.eyePosX} cy={this.state.eyePosY} r="110" fill="#5454ff" />
+        </g>
+        <style jsx>{`
           svg path {
             transition: 0.3s;
           }
@@ -88,9 +88,9 @@ render() {
             clip-path: url(#eye);
           }
         `}</style>
-    </svg>
-  );
-}
+      </svg>
+    );
+  }
 }
 
 export default Eye;

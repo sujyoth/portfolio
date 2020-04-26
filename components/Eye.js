@@ -6,8 +6,8 @@ class Eye extends React.Component {
     this.closedOutline = "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z";
 
     this.state = {
-      eyePosX: 350,
-      eyePosY: 300,
+      eyePosX: this.getRandX(),
+      eyePosY: this.getRandY(),
       eyeOutline: this.closedOutline, // initially closed
     }
   }

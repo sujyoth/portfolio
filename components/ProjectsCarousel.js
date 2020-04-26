@@ -196,7 +196,7 @@ const CarouselItem = (props) => {
           }
 
           .sheet {
-            width: 40vw;
+            width: 55vw;
           }
         }
       `}</style>

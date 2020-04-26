@@ -7,7 +7,7 @@ class Radar extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.reveal = setTimeout(() => this.setState({
       isRadarVisible: true
     }), 400);

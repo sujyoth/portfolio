@@ -124,7 +124,7 @@ const Splash = (props) => {
         @keyframes slideUp {
           0% {
             opacity: 0;
-            transform: translateY(30%);
+            transform: translateY(40%);
           }
           100% {
             opacity: 100%;

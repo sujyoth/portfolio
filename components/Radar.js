@@ -2,14 +2,16 @@ class Radar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      radarSize: '0vw',
+      radarDesktopSize: '0vw',
+      radarMobileSize: '0vw',
       rotation: 0
     }
   }
 
   componentWillMount() {
     this.reveal = setTimeout(() => this.setState({
-      radarSize: '38vw' 
+      radarDesktopSize: '38vw',
+      radarMobileSize: '70vw'
     }), 400);
 
     this.rotate = setInterval(() => this.setState({
@@ -30,8 +32,8 @@ class Radar extends React.Component {
         <style jsx>{`
           .radar {
             margin: auto;
-            width: ${this.props.hide ? 0 : this.state.radarSize}; 
-            height: ${this.props.hide ? 0 : this.state.radarSize};
+            width: ${this.props.hide ? 0 : this.state.radarMobileSize}; 
+            height: ${this.props.hide ? 0 : this.state.radarMobileSize};
             border-radius: 50%;
             background: #fbede0;
             transition: all 0.6s ease;
@@ -43,6 +45,13 @@ class Radar extends React.Component {
             transform-origin: 50% 50%;
             background: conic-gradient(#ffbe4b67, #ffbe4b);
             transform: rotate(${this.state.rotation + 'deg'});
+          }
+
+          @media screen and (min-width: 40em){
+            .radar {
+              width: ${this.props.hide ? 0 : this.state.radarDesktopSize}; 
+              height: ${this.props.hide ? 0 : this.state.radarDesktopSize};
+            }
           }
 
           @keyframes sweep {

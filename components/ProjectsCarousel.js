@@ -131,7 +131,7 @@ const CarouselItem = (props) => {
 
         .sheet {
           cursor: pointer;
-          width: 40vw;
+          width: 70vw;
         }
 
         .sheetContainer {
@@ -193,6 +193,10 @@ const CarouselItem = (props) => {
 
           .subText {
             display: block;
+          }
+
+          .sheet {
+            width: 40vw;
           }
         }
       `}</style>

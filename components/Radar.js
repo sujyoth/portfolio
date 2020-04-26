@@ -4,7 +4,7 @@ class Radar extends React.Component {
     this.state = {
       radarDesktopSize: '0vw',
       radarMobileSize: '0vw',
-      rotation: 0
+      rotation: Math.random() * 360
     }
   }
 

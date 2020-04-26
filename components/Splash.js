@@ -2,34 +2,30 @@ const Splash = (props) => {
   return (
     <div className="splash">
 
-      <div className="container">
-
         <div className="logoContainer">
           {/* TODO */}
         </div>
 
         <div className="splashTextContainer">
           <div id="animatedText1" className="splashText">
-            HEY, I'M SUJYOTH!
+            Hey, i'm sujyoth!
           </div>
           <div id="animatedLine1" className="splashTextLine" />
         </div>
 
         <div className="splashTextContainer">
           <div id="animatedText2" className="splashText">
-            I AM A SOFTWARE DEV
+            i am a software dev
           </div>
           <div id="animatedLine2" className="splashTextLine" />
         </div>
 
         <div className="splashTextContainer">
           <div id="animatedText3" className="splashText">
-            AND NLP ENTHUSIAST.
+            and nlp enthusiast.
           </div>
           <div id="animatedLine3" className="splashTextLine" />
         </div>
-
-      </div>
 
       <style jsx>{`
         @font-face {
@@ -42,14 +38,13 @@ const Splash = (props) => {
           src: url('/fonts/Anisette-Black.ttf');
         }
 
-
-
         .splash {
           position: fixed;
           padding: 0;
           margin: 0;
 
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;  
 
@@ -60,38 +55,22 @@ const Splash = (props) => {
           width: 100%;
           height: 100%;         
           background: #00143b;
-
-          animation: 0.3s linear fadeOut;
-          animation-delay: 3.0s;
-          animation-fill-mode: both;
-        }
-
-        .container {
-          position: fixed;
-          padding: 0;
-          margin: 0;
-
-          display: flex;
-          flex-direction: column;
-          width: 60%;
-          justify-content: center;
-          align-items: center;   
         }
 
         .splashText {
-          font-size: 20px;
-          font-family: Brandon;
+          font-size: 18px;
+          font-family: Anisette;
           font-weight: 400;
           letter-spacing: 2px;
+          line-height: 1.375;
           color: #fff;
-          padding: 10px;
 
           text-align: center;
           display: inline-block;
           overflow: hidden;
           white-space: nowrap;
 
-          animation: 0.3s ease slideUp;
+          animation: 0.4s ease slideUp;
           animation-fill-mode: both;
         }
 
@@ -112,6 +91,8 @@ const Splash = (props) => {
           width: 100%;
           height: 4px;
 
+          margin-bottom: 15px;
+
           animation: 0.5s rollFromLeft;
           animation-fill-mode: backwards;
           transform-origin: left;
@@ -128,7 +109,6 @@ const Splash = (props) => {
         .splashTextContainer {
           display: flex;
           flex-direction: column;
-
           align-items: left;
         }
 
@@ -144,7 +124,7 @@ const Splash = (props) => {
         @keyframes slideUp {
           0% {
             opacity: 0;
-            transform: translateY(40%);
+            transform: translateY(30%);
           }
           100% {
             opacity: 100%;
@@ -166,16 +146,17 @@ const Splash = (props) => {
         @media screen and (min-width: 40em) {
           .splashTextLine {
             height: 10px;
+            margin-bottom: 20px;
           }
 
           .splashText {
-            font-size: 37px;
+            font-size: 30px;
           }
         }
 
         @media screen and (min-width: 52em) {
           .splashText {
-            font-size: 50px;
+            font-size: 42px;
           }
         }
       `}</style>

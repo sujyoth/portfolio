@@ -34,7 +34,7 @@ class Radar extends React.Component {
             height: ${this.props.hide ? 0 : this.state.radarSize};
             border-radius: 50%;
             background: #fbede0;
-            transition: all 0.3s ease;
+            transition: all 0.6s ease;
           }
 
           .sweep {

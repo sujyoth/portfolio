@@ -222,7 +222,7 @@ export default class ProjectsCarousel extends React.Component {
     setTimeout(() => {
       this.setState({ currentSlide: 0 });
       this.updateCurrentSlide(0, true);
-    }, 3300);
+    }, 100);
   }
 
   next = () => {

@@ -6,8 +6,8 @@ class Eye extends React.Component {
     this.closedOutline = "M 0 300 Q 400 150 700 300 Q 400 150 0 300 Z";
 
     this.state = {
-      eyePosX: this.getRandX(),
-      eyePosY: this.getRandY(),
+      eyePosX: 350,
+      eyePosY: 350,
       eyeOutline: this.closedOutline, // initially closed
     }
   }
@@ -37,7 +37,6 @@ class Eye extends React.Component {
       }
     }, 7000 + Math.random() * 4000);
   }
-
 
   componentWillUnmount() {
     clearTimeout(this.firstOpener);

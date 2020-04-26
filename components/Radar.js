@@ -2,16 +2,14 @@ class Radar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      radarDesktopSize: '0vw',
-      radarMobileSize: '0vw',
+      isRadarVisible: false,
       rotation: Math.random() * 360
     }
   }
 
   componentWillMount() {
     this.reveal = setTimeout(() => this.setState({
-      radarDesktopSize: '38vw',
-      radarMobileSize: '70vw'
+      isRadarVisible: true
     }), 400);
 
     this.rotate = setInterval(() => this.setState({
@@ -32,8 +30,9 @@ class Radar extends React.Component {
         <style jsx>{`
           .radar {
             margin: auto;
-            width: ${this.props.hide ? 0 : this.state.radarMobileSize}; 
-            height: ${this.props.hide ? 0 : this.state.radarMobileSize};
+            width: ${this.props.hide ? '0vw' : (this.state.isRadarVisible ? '70vw' : '0vw')}; 
+            height: ${this.props.hide ? '0vw' : (this.state.isRadarVisible ? '70vw' : '0vw')}; 
+            opacity: ${this.props.hide ? 0 : (this.state.isRadarVisible ? 1 : 0)};
             border-radius: 50%;
             background: #fbede0;
             transition: all 0.6s ease;
@@ -49,8 +48,8 @@ class Radar extends React.Component {
 
           @media screen and (min-width: 40em){
             .radar {
-              width: ${this.props.hide ? 0 : this.state.radarDesktopSize}; 
-              height: ${this.props.hide ? 0 : this.state.radarDesktopSize};
+              width: ${this.props.hide ? '0vw' : (this.state.isRadarVisible ? '38vw' : '0vw')}; 
+              height: ${this.props.hide ? '0vw' : (this.state.isRadarVisible ? '38vw' : '0vw')};
             }
           }
 

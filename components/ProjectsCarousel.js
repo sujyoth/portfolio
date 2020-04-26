@@ -71,138 +71,135 @@ const IndicatorBar = (props) => {
   );
 }
 
-const CarouselItem = (props) => {
-  return (
-    <div className="slideContainer">
-      {props.isSelected && <div className="sheetContainer">
-        <Link href={props.href}>
-          <a>
-            <div className="sheet">
-              {props.sheet}
-            </div>
-          </a>
-        </Link>
-      </div>}
+const CarouselItem = (props) => (
+  <div className="slideContainer">
+    {props.isSelected && <div className="sheetContainer">
       <Link href={props.href}>
         <a>
-          <div className="contentContainer">
-            <div className="mainContainer">
-              <div className="mainText">{props.mainText}</div>
-              <div className="mainTextLine" />
-            </div>
-            <div className="subText">{props.subText}</div>
+          <div className="sheet">
+            {props.sheet}
           </div>
         </a>
       </Link>
+    </div>}
+    <Link href={props.href}>
+      <a>
+        <div className="contentContainer">
+          <div className="mainContainer">
+            <div className="mainText">{props.mainText}</div>
+            <div className="mainTextLine" />
+          </div>
+          <div className="subText">{props.subText}</div>
+        </div>
+      </a>
+    </Link>
+    <style jsx>{`
+      a {
+        text-decoration: none;
+      }
+      
+      .slideContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-      <style jsx>{`
-        a {
-          text-decoration: none;
-        }
+        position: relative
+        width: 100%;
+        height: 100vh;
+        background: ${props.backgroundColor};
+
+        transition: background-color 0.3s ease;
+      }
+
+      .contentContainer {
+        cursor: pointer;
+
+        position: relative;
+        display: block;
+      }
+
+      .mainContainer {
+        position: relative;
+        padding-top: 14px;
+        margin-bottom: 20px;
+        display: inline-block;
+        z-index: 400;
+      }
+
+      .sheet {
+        cursor: pointer;
+        width: 70vw;
+      }
+
+      .sheetContainer {
+        width: 60vw;
+        height: 60vw;
+
+        position: fixed;
+        z-index: 70;
+        margin: auto;
+
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mainText {
+        font-size: 40px;
+        font-family: Anisette;
+        letter-spacing: 2px;
+        color: #fff;
+      }
+
+      .mainTextLine {
+        background: #fff;
+        width: ${props.lineWidthPercentage}%;
+        height: 8px;
         
-        .slideContainer {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+        transition: width 1s ease;
+        transition-delay: 0.3s;
+        transform-origin: left;
+      }
 
-          position: relative
-          width: 100%;
-          height: 100vh;
-          background: ${props.backgroundColor};
+      .subText {
+        font-size: 12px;
+        font-family: Brandon;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: uppercase;
 
-          transition: background-color 0.3s ease;
-        }
+        display: none;
+        
+        position: relative;
+        z-index: 400;
 
-        .contentContainer {
-          cursor: pointer;
+        opacity: ${props.subTextOpacity};
 
-          position: relative;
-          display: block;
-        }
+        transition: opacity 1s ease;
+        transition-delay: 0.5s;
+      }
 
-        .mainContainer {
-          position: relative;
-          padding-top: 14px;
-          margin-bottom: 20px;
-          display: inline-block;
-          z-index: 400;
-        }
-
-        .sheet {
-          cursor: pointer;
-          width: 70vw;
-        }
-
-        .sheetContainer {
-          width: 60vw;
-          height: 60vw;
-
-          position: fixed;
-          z-index: 70;
-          margin: auto;
-
-          display:flex;
-          align-items: center;
-          justify-content: center;
-        }
-
+      @media screen and (min-width: 40em) {
         .mainText {
-          font-size: 40px;
-          font-family: Anisette;
-          letter-spacing: 2px;
-          color: #fff;
+          font-size: 100px;
         }
 
         .mainTextLine {
-          background: #fff;
-          width: ${props.lineWidthPercentage}%;
-          height: 8px;
-          
-          transition: width 1s ease;
-          transition-delay: 0.3s;
-          transform-origin: left;
+          height: 18px;
         }
 
         .subText {
-          font-size: 12px;
-          font-family: Brandon;
-          letter-spacing: 2px;
-          color: #fff;
-          text-transform: uppercase;
-
-          display: none;
-          
-          position: relative;
-          z-index: 400;
-
-          opacity: ${props.subTextOpacity};
-
-          transition: opacity 1s ease;
-          transition-delay: 0.5s;
+          display: block;
         }
 
-        @media screen and (min-width: 40em) {
-          .mainText {
-            font-size: 100px;
-          }
-
-          .mainTextLine {
-            height: 18px;
-          }
-
-          .subText {
-            display: block;
-          }
-
-          .sheet {
-            width: 55vw;
-          }
+        .sheet {
+          width: 55vw;
         }
-      `}</style>
-    </div>
-  );
-}
+      }
+    `}</style>
+  </div>
+);
 
 export default class ProjectsCarousel extends React.Component {
   constructor(props) {

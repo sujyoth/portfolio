@@ -8,7 +8,7 @@ const Index = props => {
       <Head>
         <title key="title">Sujyoth Karkera</title>
         <meta key="og:title" property="og:title" content="Sujyoth Karkera" />
-        <meta key="og:image" property='og:image' content="/images/home.png" />
+        <meta key="og:image" property='og:image' content="https://ibb.co/kSc3hK8" />
         <meta key="og:image:width" property="og:image:width" content="1920" />
         <meta key="og:image:height" property="og:image:height" content="1080" />
         <meta key='og:description' property='og:description' content="A website to showcase my projects." />
